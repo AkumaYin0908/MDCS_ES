@@ -5,6 +5,8 @@ package View.MainFrame;
 
 import javax.swing.*;
 import OtherGUIFunctionalities.DragListener;
+import View.StaffForm;
+import View.UserForm;
 import View.MainFrame.Component.Header;
 import View.MainFrame.Component.Menu;
 import View.MainFrame.Event.EventMenuSelected;
@@ -13,6 +15,9 @@ import net.miginfocom.swing.MigLayout;
 import java.awt.Color;
 import java.awt.CardLayout;
 import javax.swing.border.MatteBorder;
+
+import Controller.frmStaffController;
+import Controller.frmUserController;
 import Model.Staff;
 import Model.User;
 
@@ -74,10 +79,16 @@ public class MainFrame extends JFrame{
 						case 1:
 						break;
 						case 2:
-							
+							Staff staff=new Staff();
+							StaffForm frmStaff=new StaffForm();
+							frmStaffController staffController = new frmStaffController(frmStaff, staff);
+							frmStaff.setVisible(true);
 						break;
 						case 3:
-							
+							User user=new User();
+							UserForm frmUser = new UserForm();
+							frmUserController userController =new frmUserController(frmUser, user);
+							frmUser.setVisible(true);
 							
 						break;
 						case 4:
