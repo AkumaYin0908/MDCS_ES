@@ -275,7 +275,7 @@ public class frmUserController {
 	}
 	
 	public void callStaffDialog() {
-		Staff staff=new Staff();
+		staff=new Staff();
 		SearchStaffDialog staffDialog=new SearchStaffDialog(frmUser);
 		staffDialogController searchStaffController=new staffDialogController(staff, staffDialog);
 		staffDialog.setVisible(true);
