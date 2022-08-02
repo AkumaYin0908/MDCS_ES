@@ -42,6 +42,7 @@ public class StaffInputDialog extends JDialog {
 	private JButton btnSave;
 	private JButton btnBack;
 	
+	/**************************************************	STAFF INPUT DIALOG CONSTRUCTOR ****************************************/
 	
 	public StaffInputDialog() {
 		setUndecorated(true);
@@ -49,11 +50,13 @@ public class StaffInputDialog extends JDialog {
 		layout=new MigLayout("fill", "0[fill]0", "0[]10[fill]0[grow]0");
 		getContentPane().setLayout(layout);
 		
+		/**************************************************	TOP PANEL ****************************************/
 		topPanel = new JPanel();
 		topPanel.setBackground(new Color(128, 0, 0));
 		getContentPane().add(topPanel, "cell 0 0,height 40!");
 		topPanel.setLayout(null);
 		
+		/**************************************************	INPUT PANEL ****************************************/
 		inputPanel = new JPanel();
 		getContentPane().add(inputPanel, "cell 0 1,height 300!");
 		GridBagLayout gbl_inputPanel = new GridBagLayout();
@@ -123,12 +126,11 @@ public class StaffInputDialog extends JDialog {
 		gbc_txtPosition.gridy = 4;
 		inputPanel.add(txtPosition, gbc_txtPosition);
 		
+		/**************************************************	BUTTON PANEL ****************************************/
+		
 		buttonPanel = new JPanel();
 		getContentPane().add(buttonPanel, "cell 0 2,height 75!");
 		buttonPanel.setLayout(new MigLayout("fill", "50[100!,grow]20[100!,grow]50", "[50]"));
-		
-		
-		
 		
 		
 		btnSave = new JButton("Save");
@@ -151,6 +153,37 @@ public class StaffInputDialog extends JDialog {
 		btnBack.setBackground(new Color(128, 0, 0));
 		buttonPanel.add(btnBack, "cell 1 0,height 50!");
 		
-
 	}
+	
+	/**************************************************	GETTERS METHOD ****************************************/
+
+	public JTextField getTxtStaffID() {
+		return txtStaffID;
+	}
+
+	public JTextField getTxtLastName() {
+		return txtLastName;
+	}
+
+	public JTextField getTxtFirstName() {
+		return txtFirstName;
+	}
+
+	public JTextField getTxtMidName() {
+		return txtMidName;
+	}
+
+	public JTextField getTxtPosition() {
+		return txtPosition;
+	}
+
+	public JButton getBtnSave() {
+		return btnSave;
+	}
+
+	public JButton getBtnBack() {
+		return btnBack;
+	}
+	
+	
 }
