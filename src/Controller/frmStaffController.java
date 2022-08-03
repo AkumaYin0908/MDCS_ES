@@ -18,6 +18,8 @@ import View.StaffInputDialog;
 public class FrmStaffController {
 	private StaffForm frmStaff;
 	private Staff staff;
+	private StaffInputDialog dlgStaffInput;
+	private DlgStaffInputController dlgStaffController;
 	SetConnect connect;
 	Connection sqlConn;
 	ResultSet rs;
@@ -32,8 +34,17 @@ public class FrmStaffController {
 		this.frmStaff=frmStaff;
 		this.staff=staff;
 		
+		
+		
 		frmStaff.getBtnAdd().addActionListener((ActionEvent e)->{
-			new StaffInputDialog().setVisible(true);
+			loadStaffID();
+			
+			dlgStaffInput =new StaffInputDialog(frmStaff);
+			dlgStaffInput.getTxtStaffID().setText(String.valueOf(staff.getStaffID()+1));
+			dlgStaffController =new DlgStaffInputController(dlgStaffInput,staff);
+			dlgStaffInput.setVisible(true);
+			
+			
 		});
 		
 		frmStaff.getTable().addMouseListener(new MouseAdapter() {
@@ -51,10 +62,13 @@ public class FrmStaffController {
 		});
 		
 		displayUserTable();
+		
+		
+
 	}
 	
 	public void displayUserTable() {
-		loadStaffID();
+		
 		try {
 			pst=sqlConn.prepareStatement("select*from tblstaff");
 			rs=pst.executeQuery();

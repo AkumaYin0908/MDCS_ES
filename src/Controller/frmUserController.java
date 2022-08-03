@@ -277,7 +277,7 @@ public class FrmUserController {
 	public void callStaffDialog() {
 		staff=new Staff();
 		SearchStaffDialog staffDialog=new SearchStaffDialog(frmUser);
-		DlgStaffController searchStaffController=new DlgStaffController(staff, staffDialog);
+		DlgSearchStaffController searchStaffController=new DlgSearchStaffController(staff, staffDialog);
 		staffDialog.setVisible(true);
 		
 		user.setStaffID(staff.getStaffID());

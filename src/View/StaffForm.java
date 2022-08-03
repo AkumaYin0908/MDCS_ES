@@ -10,6 +10,7 @@ import javax.swing.JLabel;
 import OtherGUIFunctionalities.DragListener;
 import View.Component.FormHeader;
 import View.MainFrame.Component.Swing.Scrollbar.ScrollBarCustom;
+import View.MainFrame.Component.Swing.Scrollbar.ScrollBarCustomH;
 import net.miginfocom.swing.MigLayout;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -38,7 +39,6 @@ public class StaffForm extends JDialog {
 	private JPanel buttonPanel;
 	private JButton btnAdd;
 	private JButton btnEdit;
-	private JButton btnSave;
 	private JButton btnDelete;
 	
 	/**************************************************	STAFFFORM CONSTRUCTOR ****************************************/
@@ -53,7 +53,7 @@ public class StaffForm extends JDialog {
 		
 		/**************************************************	HEADER ****************************************/
 		FormHeader header=new FormHeader();
-		getContentPane().add(header, "cell 0 0,width 480!,height 40!");
+		getContentPane().add(header, "cell 0 0,width 400!,height 40!");
 		header.CloseButton().addActionListener((ActionEvent e)->{
 			dispose();
 		});
@@ -89,6 +89,7 @@ public class StaffForm extends JDialog {
 	         }
 		
 		};
+	
 		table.setSelectionForeground(new Color(0, 0, 0));
 		table.setShowVerticalLines(false);
 		table.setShowHorizontalLines(false);
@@ -99,7 +100,7 @@ public class StaffForm extends JDialog {
 		table.setModel(tableModel);
 		table.setShowGrid(false);
 		table.setFocusable(false);
-		
+		table.setPreferredSize(null);
 		table.setIntercellSpacing(new Dimension(0, 0));
 		table.getColumnModel().getColumn(0).setPreferredWidth(5);
 		table.getColumnModel().getColumn(1).setPreferredWidth(100);
@@ -140,7 +141,7 @@ public class StaffForm extends JDialog {
 		
 		
 		
-		scrollPane = new JScrollPane(table);
+		scrollPane = new JScrollPane();
 		scrollPane.setOpaque(false);
 		scrollPane.setBorder(new EmptyBorder(0, 0, 0, 0));
 		scrollPane.setViewportBorder(null);
@@ -149,6 +150,10 @@ public class StaffForm extends JDialog {
 		ScrollBarCustom scrollBarCustom = new ScrollBarCustom();
 		scrollBarCustom.setForeground(Color.WHITE);
 		scrollPane.setVerticalScrollBar(scrollBarCustom);
+		scrollPane.setViewportView(table);
+		ScrollBarCustomH scrollBarCustomH=new ScrollBarCustomH();
+		scrollBarCustomH.setForeground(Color.WHITE);
+		scrollPane.setHorizontalScrollBar(scrollBarCustomH);
 		
 		tablePanel.add(scrollPane, "cell 0 0,grow");
 		/**************************************************	BUTTON PANEL ****************************************/
@@ -172,7 +177,7 @@ public class StaffForm extends JDialog {
 		buttonPanel = new JPanel();
 		buttonPanel.setOpaque(false);
 		getContentPane().add(buttonPanel, "cell 0 2, height 60!");
-		buttonPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+		buttonPanel.setLayout(new MigLayout("fill", "20[90!][90!][90!]20", "[]"));
 		
 		btnAdd = new JButton("Add");
 		btnAdd.setPreferredSize(new Dimension(90, 45));
@@ -182,18 +187,9 @@ public class StaffForm extends JDialog {
 		btnAdd.setFont(new Font("Roboto", Font.BOLD, 12));
 		btnAdd.setBackground(new Color(128, 0, 0));
 		btnAdd.setIcon(new ImageIcon(addIcon));
-		buttonPanel.add(btnAdd);
+		buttonPanel.add(btnAdd, "cell 0 0");
 		
-		btnDelete = new JButton("Delete");
-		btnDelete.setPreferredSize(new Dimension(90, 45));
-		btnDelete.setMargin(new Insets(2, 14, 2, 2));
-		btnDelete.setHorizontalAlignment(SwingConstants.LEFT);
-		btnDelete.setForeground(Color.WHITE);
-		btnDelete.setFont(new Font("Roboto", Font.BOLD, 12));
-		btnDelete.setEnabled(false);
-		btnDelete.setBackground(new Color(128, 0, 0));
-		btnDelete.setIcon(new ImageIcon(deleteIcon));
-		buttonPanel.add(btnDelete);
+		
 		
 		btnEdit = new JButton("Edit");
 		btnEdit.setPreferredSize(new Dimension(90, 45));
@@ -204,18 +200,18 @@ public class StaffForm extends JDialog {
 		btnEdit.setEnabled(false);
 		btnEdit.setBackground(new Color(128, 0, 0));
 		btnEdit.setIcon(new ImageIcon(editIcon));
-		buttonPanel.add(btnEdit);
+		buttonPanel.add(btnEdit, "cell 1 0");
 		
-		btnSave = new JButton("Save");
-		btnSave.setPreferredSize(new Dimension(90, 45));
-		btnSave.setMargin(new Insets(2, 14, 2, 2));
-		btnSave.setHorizontalAlignment(SwingConstants.LEFT);
-		btnSave.setForeground(Color.WHITE);
-		btnSave.setFont(new Font("Roboto", Font.BOLD, 12));
-		btnSave.setEnabled(false);
-		btnSave.setBackground(new Color(128, 0, 0));
-		btnSave.setIcon(new ImageIcon(saveIcon));
-		buttonPanel.add(btnSave);
+		btnDelete = new JButton("Delete");
+		btnDelete.setPreferredSize(new Dimension(90, 45));
+		btnDelete.setMargin(new Insets(2, 14, 2, 2));
+		btnDelete.setHorizontalAlignment(SwingConstants.LEFT);
+		btnDelete.setForeground(Color.WHITE);
+		btnDelete.setFont(new Font("Roboto", Font.BOLD, 12));
+		btnDelete.setEnabled(false);
+		btnDelete.setBackground(new Color(128, 0, 0));
+		btnDelete.setIcon(new ImageIcon(deleteIcon));
+		buttonPanel.add(btnDelete, "cell 2 0");
 	}
 	
 	/**************************************************	INITIALIZE METHOD ****************************************/
@@ -228,7 +224,7 @@ public class StaffForm extends JDialog {
 		
 		layout=new MigLayout("fillx", "0[fill]0", "0[40.00,top,fill]0[]0[grow]0[]0");//"fill", "0[]0[100%,fill]0", "0[top,fill]0[]0"
 		setUndecorated(true);
-		setBounds(100, 100, 480, 420);
+		setBounds(100, 100, 400, 420);
 		setLocationRelativeTo(null);
 		getContentPane().setLayout(layout);
 		getRootPane().setBorder(BorderFactory.createLineBorder(new Color(128,0,0)));
@@ -262,10 +258,7 @@ public class StaffForm extends JDialog {
 		return btnEdit;
 	}
 
-	public JButton getBtnSave() {
-		return btnSave;
-	}
-
+	
 	public JButton getBtnDelete() {
 		return btnDelete;
 	}

@@ -20,6 +20,10 @@ import javax.swing.JTextField;
 import java.awt.Font;
 import javax.swing.border.MatteBorder;
 import javax.swing.border.TitledBorder;
+import javax.swing.table.DefaultTableModel;
+
+import OtherGUIFunctionalities.DragListener;
+
 import javax.swing.SwingConstants;
 import java.awt.Dimension;
 import java.awt.CardLayout;
@@ -28,8 +32,13 @@ import javax.swing.BoxLayout;
 import java.awt.GridLayout;
 import java.awt.Image;
 import javax.swing.border.BevelBorder;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.border.SoftBevelBorder;
 
 public class StaffInputDialog extends JDialog {
+	private StaffForm frmStaff;
+	private DefaultTableModel tableModel;
 	private JPanel topPanel;
 	private JPanel inputPanel;
 	private JPanel buttonPanel;
@@ -41,10 +50,13 @@ public class StaffInputDialog extends JDialog {
 	private JTextField txtPosition;
 	private JButton btnSave;
 	private JButton btnBack;
-	
+	DragListener drag;
 	/**************************************************	STAFF INPUT DIALOG CONSTRUCTOR ****************************************/
 	
-	public StaffInputDialog() {
+	public StaffInputDialog(StaffForm frmStaff) {
+		this.frmStaff=frmStaff;
+		this.tableModel=frmStaff.getTableModel();
+		
 		initialize();
 		init();
 	}
@@ -70,6 +82,8 @@ public class StaffInputDialog extends JDialog {
 		inputPanel.setLayout(gbl_inputPanel);
 		
 		txtStaffID = new JTextField();
+		txtStaffID.setHorizontalAlignment(SwingConstants.CENTER);
+		txtStaffID.setFocusable(false);
 		txtStaffID.setOpaque(false);
 		txtStaffID.setBorder(new TitledBorder(new MatteBorder(0, 0, 1, 0, (Color) new Color(128, 0, 0)), "Staff ID", TitledBorder.LEADING, TitledBorder.TOP, new Font("Roboto", Font.PLAIN,14), new Color(128, 0, 0)));
 		txtStaffID.setFont(new Font("Roboto", Font.PLAIN, 16));
@@ -137,23 +151,25 @@ public class StaffInputDialog extends JDialog {
 		buttonPanel.setLayout(new MigLayout("fill", "50[100!,grow]20[100!,grow]50", "[50]"));
 		
 		
-		btnSave = new JButton("Save");
-		btnSave.setBorder(new EmptyBorder(0, 0, 0, 0));
+		btnSave = new JButton();
+		btnSave.setText("Save");
+		btnSave.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		btnSave.setHorizontalTextPosition(SwingConstants.CENTER);
 		btnSave.setPreferredSize(new Dimension(90, 45));
 		btnSave.setMargin(new Insets(2, 14, 2, 2));
 		btnSave.setForeground(Color.WHITE);
-		btnSave.setFont(new Font("Roboto", Font.BOLD, 12));
+		btnSave.setFont(new Font("Roboto", Font.BOLD, 14));
 		btnSave.setBackground(new Color(128, 0, 0));
 		buttonPanel.add(btnSave, "cell 0 0,height 50!");
-		
-		btnBack = new JButton("Back");
-		btnBack.setBorder(new EmptyBorder(0, 0, 0, 0));
+	
+		btnBack = new JButton();
+		btnBack.setText("Back");
+		btnBack.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		btnBack.setHorizontalTextPosition(SwingConstants.CENTER);
 		btnBack.setPreferredSize(new Dimension(90, 45));
 		btnBack.setMargin(new Insets(2, 14, 2, 2));
 		btnBack.setForeground(Color.WHITE);
-		btnBack.setFont(new Font("Roboto", Font.BOLD, 12));
+		btnBack.setFont(new Font("Roboto", Font.BOLD, 14));
 		btnBack.setBackground(new Color(128, 0, 0));
 		buttonPanel.add(btnBack, "cell 1 0,height 50!");
 		
@@ -165,6 +181,9 @@ public class StaffInputDialog extends JDialog {
 		setUndecorated(true);
 		setSize(325,435);
 		setLocationRelativeTo(null);
+		drag=new DragListener();
+		addMouseListener(drag);
+		addMouseMotionListener(drag);
 		layout=new MigLayout("fill", "0[fill]0", "0[]10[fill]0[grow]0");
 		getContentPane().setLayout(layout);
 	}
@@ -199,5 +218,8 @@ public class StaffInputDialog extends JDialog {
 		return btnBack;
 	}
 	
+	public DefaultTableModel getTableModel() {
+		return tableModel;
+	}
 	
 }
