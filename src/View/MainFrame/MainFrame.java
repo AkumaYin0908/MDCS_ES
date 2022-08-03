@@ -16,8 +16,8 @@ import java.awt.Color;
 import java.awt.CardLayout;
 import javax.swing.border.MatteBorder;
 
-import Controller.frmStaffController;
-import Controller.frmUserController;
+import Controller.FrmStaffController;
+import Controller.FrmUserController;
 import Model.Staff;
 import Model.User;
 
@@ -81,13 +81,13 @@ public class MainFrame extends JFrame{
 						case 2:
 							Staff staff=new Staff();
 							StaffForm frmStaff=new StaffForm();
-							frmStaffController staffController = new frmStaffController(frmStaff, staff);
+							FrmStaffController staffController = new FrmStaffController(frmStaff, staff);
 							frmStaff.setVisible(true);
 						break;
 						case 3:
 							User user=new User();
 							UserForm frmUser = new UserForm();
-							frmUserController userController =new frmUserController(frmUser, user);
+							FrmUserController userController =new FrmUserController(frmUser, user);
 							frmUser.setVisible(true);
 							
 						break;

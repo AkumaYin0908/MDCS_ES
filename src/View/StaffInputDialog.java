@@ -45,10 +45,13 @@ public class StaffInputDialog extends JDialog {
 	/**************************************************	STAFF INPUT DIALOG CONSTRUCTOR ****************************************/
 	
 	public StaffInputDialog() {
-		setUndecorated(true);
-		setSize(325,435);
-		layout=new MigLayout("fill", "0[fill]0", "0[]10[fill]0[grow]0");
-		getContentPane().setLayout(layout);
+		initialize();
+		init();
+	}
+	
+	/**************************************************	INIT METHOD ****************************************/
+	
+	public void init() {
 		
 		/**************************************************	TOP PANEL ****************************************/
 		topPanel = new JPanel();
@@ -82,6 +85,7 @@ public class StaffInputDialog extends JDialog {
 		txtLastName.setOpaque(false);
 		txtLastName.setFont(new Font("Roboto", Font.PLAIN, 16));
 		txtLastName.setColumns(10);
+		txtLastName.requestFocus();
 		txtLastName.setBorder(new TitledBorder(new MatteBorder(0, 0, 1, 0, (Color) new Color(128, 0, 0)), "Last Name", TitledBorder.LEADING, TitledBorder.TOP, new Font("Roboto", Font.PLAIN,14), new Color(128, 0, 0)));
 		GridBagConstraints gbc_txtLastName = new GridBagConstraints();
 		gbc_txtLastName.insets = new Insets(5, 20, 5, 20);
@@ -153,6 +157,16 @@ public class StaffInputDialog extends JDialog {
 		btnBack.setBackground(new Color(128, 0, 0));
 		buttonPanel.add(btnBack, "cell 1 0,height 50!");
 		
+	}
+	
+	/**************************************************	INITIALIZE METHOD ****************************************/
+	public void initialize() {
+		setModal(true);
+		setUndecorated(true);
+		setSize(325,435);
+		setLocationRelativeTo(null);
+		layout=new MigLayout("fill", "0[fill]0", "0[]10[fill]0[grow]0");
+		getContentPane().setLayout(layout);
 	}
 	
 	/**************************************************	GETTERS METHOD ****************************************/

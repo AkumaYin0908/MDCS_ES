@@ -20,7 +20,7 @@ import Model.User;
 import View.SearchStaffDialog;
 import View.UserForm;
 
-public class staffDialogController {
+public class DlgStaffController {
 private Staff staff;
 private SearchStaffDialog staffDialog;
 SetConnect connect;
@@ -28,7 +28,7 @@ Connection sqlConn;
 ResultSet rs;
 PreparedStatement pst;
 
-	public staffDialogController(Staff staff, SearchStaffDialog staffDialog) {
+	public DlgStaffController(Staff staff, SearchStaffDialog staffDialog) {
 		
 		connect=new SetConnect();
 		connect.connectDB();

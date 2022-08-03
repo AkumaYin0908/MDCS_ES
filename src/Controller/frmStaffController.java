@@ -1,5 +1,6 @@
 package Controller;
 
+import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.sql.Connection;
@@ -12,8 +13,9 @@ import javax.swing.JOptionPane;
 import DBConnection.SetConnect;
 import Model.Staff;
 import View.StaffForm;
+import View.StaffInputDialog;
 
-public class frmStaffController {
+public class FrmStaffController {
 	private StaffForm frmStaff;
 	private Staff staff;
 	SetConnect connect;
@@ -22,13 +24,17 @@ public class frmStaffController {
 	PreparedStatement pst;
 	
 	
-	public frmStaffController(StaffForm frmStaff, Staff staff) {
+	public FrmStaffController(StaffForm frmStaff, Staff staff) {
 		connect=new SetConnect();
 		connect.connectDB();
 		sqlConn=connect.getSQLConn();
 		
 		this.frmStaff=frmStaff;
 		this.staff=staff;
+		
+		frmStaff.getBtnAdd().addActionListener((ActionEvent e)->{
+			new StaffInputDialog().setVisible(true);
+		});
 		
 		frmStaff.getTable().addMouseListener(new MouseAdapter() {
 

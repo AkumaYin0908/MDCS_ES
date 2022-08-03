@@ -15,7 +15,7 @@ import DBConnection.SetConnect;
 
 
 
-public class frmUserController {
+public class FrmUserController {
 
 	private UserForm frmUser;
 	private User user;
@@ -25,7 +25,7 @@ public class frmUserController {
 	ResultSet rs;
 	PreparedStatement pst;
 	
-	public frmUserController(UserForm frmUser, User user) {
+	public FrmUserController(UserForm frmUser, User user) {
 		connect=new SetConnect();
 		connect.connectDB();
 		sqlConn=connect.getSQLConn();
@@ -277,7 +277,7 @@ public class frmUserController {
 	public void callStaffDialog() {
 		staff=new Staff();
 		SearchStaffDialog staffDialog=new SearchStaffDialog(frmUser);
-		staffDialogController searchStaffController=new staffDialogController(staff, staffDialog);
+		DlgStaffController searchStaffController=new DlgStaffController(staff, staffDialog);
 		staffDialog.setVisible(true);
 		
 		user.setStaffID(staff.getStaffID());
