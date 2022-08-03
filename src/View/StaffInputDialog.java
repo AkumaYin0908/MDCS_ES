@@ -1,8 +1,6 @@
 package View;
 
-import java.awt.BorderLayout;
-import java.awt.FlowLayout;
-
+import javax.swing.*;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
@@ -10,11 +8,7 @@ import javax.swing.border.EmptyBorder;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import net.miginfocom.swing.MigLayout;
-import javax.swing.GroupLayout;
-import javax.swing.ImageIcon;
-import javax.swing.GroupLayout.Alignment;
 import java.awt.Color;
-import javax.swing.JLabel;
 import java.awt.Insets;
 import javax.swing.JTextField;
 import java.awt.Font;
@@ -26,15 +20,10 @@ import OtherGUIFunctionalities.DragListener;
 
 import javax.swing.SwingConstants;
 import java.awt.Dimension;
-import java.awt.CardLayout;
-import javax.swing.SpringLayout;
-import javax.swing.BoxLayout;
-import java.awt.GridLayout;
-import java.awt.Image;
 import javax.swing.border.BevelBorder;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 import javax.swing.border.SoftBevelBorder;
+import javax.swing.GroupLayout.Alignment;
+import java.awt.FlowLayout;
 
 public class StaffInputDialog extends JDialog {
 	private StaffForm frmStaff;
@@ -42,6 +31,7 @@ public class StaffInputDialog extends JDialog {
 	private JPanel topPanel;
 	private JPanel inputPanel;
 	private JPanel buttonPanel;
+	private JPanel radioPanel;
 	private MigLayout layout;
 	private JTextField txtStaffID;
 	private JTextField txtLastName;
@@ -50,6 +40,9 @@ public class StaffInputDialog extends JDialog {
 	private JTextField txtPosition;
 	private JButton btnSave;
 	private JButton btnBack;
+	private JRadioButton rdbEmployed;
+	private JRadioButton rdbNemployed;
+	private ButtonGroup btnGemployed;
 	DragListener drag;
 	/**************************************************	STAFF INPUT DIALOG CONSTRUCTOR ****************************************/
 	
@@ -73,12 +66,12 @@ public class StaffInputDialog extends JDialog {
 		
 		/**************************************************	INPUT PANEL ****************************************/
 		inputPanel = new JPanel();
-		getContentPane().add(inputPanel, "cell 0 1,height 300!");
+		getContentPane().add(inputPanel, "cell 0 1,height 375!");
 		GridBagLayout gbl_inputPanel = new GridBagLayout();
 		gbl_inputPanel.columnWidths = new int[]{46, 0};
 		gbl_inputPanel.rowHeights = new int[]{0, 0, 0, 0, 0, 0};
 		gbl_inputPanel.columnWeights = new double[]{1.0, Double.MIN_VALUE};
-		gbl_inputPanel.rowWeights = new double[]{1.0, 1.0, 1.0, 1.0, 1.0, Double.MIN_VALUE};
+		gbl_inputPanel.rowWeights = new double[]{1.0, 1.0, 1.0, 1.0, 1.0, 1.0};
 		inputPanel.setLayout(gbl_inputPanel);
 		
 		txtStaffID = new JTextField();
@@ -144,6 +137,31 @@ public class StaffInputDialog extends JDialog {
 		gbc_txtPosition.gridy = 4;
 		inputPanel.add(txtPosition, gbc_txtPosition);
 		
+		/**************************************************	RADIO PANEL ****************************************/
+		
+		radioPanel=new JPanel();
+		radioPanel.setBorder(new TitledBorder(new EmptyBorder(0,0,0,0), "Employement Status", TitledBorder.LEADING, TitledBorder.TOP, new Font("Roboto", Font.PLAIN,14), new Color(128, 0, 0)));
+		GridBagConstraints gbc_radioPanel = new GridBagConstraints();
+		gbc_radioPanel.insets = new Insets(5, 20, 5, 20);
+		gbc_radioPanel.fill = GridBagConstraints.HORIZONTAL;
+		gbc_radioPanel.gridx=0;
+		gbc_radioPanel.gridy = 5;
+		
+		rdbEmployed =new JRadioButton("Employed",true);
+		rdbNemployed=new JRadioButton("Not Employed");
+		btnGemployed=new ButtonGroup();
+		
+		btnGemployed.add(rdbEmployed);
+		btnGemployed.add(rdbNemployed);
+		
+		
+		
+		inputPanel.add(radioPanel, gbc_radioPanel);
+		radioPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+		radioPanel.add(rdbEmployed);
+		radioPanel.add(rdbNemployed);
+		
+		
 		/**************************************************	BUTTON PANEL ****************************************/
 		
 		buttonPanel = new JPanel();
@@ -179,7 +197,7 @@ public class StaffInputDialog extends JDialog {
 	public void initialize() {
 		setModal(true);
 		setUndecorated(true);
-		setSize(325,435);
+		setSize(325,500);
 		setLocationRelativeTo(null);
 		drag=new DragListener();
 		addMouseListener(drag);
