@@ -47,6 +47,11 @@ public class FrmStaffController {
 			
 		});
 		
+		frmStaff.getBtnDelete().addActionListener((ActionEvent e)->{
+			
+			
+		});
+		
 		frmStaff.getTable().addMouseListener(new MouseAdapter() {
 
 			@Override
@@ -131,4 +136,5 @@ public class FrmStaffController {
 			JOptionPane.showMessageDialog(null, ex);
 		}
 	}
+	
 }

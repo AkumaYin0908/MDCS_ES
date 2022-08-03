@@ -148,7 +148,11 @@ public class StaffInputDialog extends JDialog {
 		gbc_radioPanel.gridy = 5;
 		
 		rdbEmployed =new JRadioButton("Employed",true);
+		rdbEmployed.setForeground(new Color(128, 0, 0));
+		rdbEmployed.setFont(new Font("Roboto", Font.PLAIN, 14));
 		rdbNemployed=new JRadioButton("Not Employed");
+		rdbNemployed.setForeground(new Color(128, 0, 0));
+		rdbNemployed.setFont(new Font("Roboto", Font.PLAIN, 14));
 		btnGemployed=new ButtonGroup();
 		
 		btnGemployed.add(rdbEmployed);
