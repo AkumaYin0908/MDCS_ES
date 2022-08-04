@@ -247,9 +247,4 @@ public class StaffForm extends JDialog {
 	}
 
 	
-	public JButton getBtnDelete() {
-		return btnDelete;
-	}
-	
-	
 }
