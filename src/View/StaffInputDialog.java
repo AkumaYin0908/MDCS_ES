@@ -244,29 +244,4 @@ public class StaffInputDialog extends JDialog {
 		return tableModel;
 	}
 	
-	public JPanel getRadioPanel() {
-		return radioPanel;
-	}
-
-	public JRadioButton getRdbEmployed() {
-		return rdbEmployed;
-	}
-
-	
-
-	public JRadioButton getRdbNemployed() {
-		return rdbNemployed;
-	}
-
-	
-
-	public ButtonGroup getBtnGemployed() {
-		return btnGemployed;
-	}
-
-	
-	
-	
-	
-	
 }

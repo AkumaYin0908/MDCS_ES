@@ -42,30 +42,15 @@ public class FrmStaffController {
 			dlgStaffInput =new StaffInputDialog(frmStaff);
 			dlgStaffInput.getTxtStaffID().setText(String.valueOf(staff.getStaffID()+1));
 			dlgStaffController =new DlgStaffInputController(dlgStaffInput,staff);
-			dlgStaffInput.getRadioPanel().setVisible(false);
 			dlgStaffInput.setVisible(true);
 			
 			
 		});
 		
-		frmStaff.getBtnEdit().addActionListener((ActionEvent e)->{
+		frmStaff.getBtnDelete().addActionListener((ActionEvent e)->{
 			
-			dlgStaffInput =new StaffInputDialog(frmStaff);
-			dlgStaffInput.getTxtStaffID().setText(String.valueOf(staff.getStaffID()+1));
-			dlgStaffController =new DlgStaffInputController(dlgStaffInput,staff);
-			dlgStaffInput.getRadioPanel().setVisible(true);
-			
-			dlgStaffInput.getTxtStaffID().setText(String.valueOf(staff.getStaffID()));
-			dlgStaffInput.getTxtLastName().setText(staff.getLastName());
-			dlgStaffInput.getTxtFirstName().setText(staff.getFirstName());
-			dlgStaffInput.getTxtMidName().setText(staff.getMidName());
-			dlgStaffInput.getTxtPosition().setText(staff.getPosition());
-			
-			dlgStaffInput.getBtnSave().setText("Update");
-			dlgStaffInput.setVisible(true);
 			
 		});
-		
 		
 		frmStaff.getTable().addMouseListener(new MouseAdapter() {
 
@@ -74,7 +59,7 @@ public class FrmStaffController {
 				try {
 					if(e.getClickCount()==1) {
 						getTableData();
-						frmStaff.getBtnEdit().setEnabled(true);
+						
 					}
 					
 				}catch(Exception ex) {}
@@ -144,7 +129,7 @@ public class FrmStaffController {
 				
 				
 			}
-			
+			//System.out.println("Staff ID: "+staff.getStaffID());
 			
 			
 		}catch(SQLException ex) {

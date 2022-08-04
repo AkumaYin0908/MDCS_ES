@@ -36,9 +36,7 @@ public class DlgStaffInputController {
 		});
 		
 		dlgStaffInput.getBtnSave().addActionListener((ActionEvent e)->{
-			
-			if(dlgStaffInput.getBtnSave().getText().equals("Save")) saveStaff();
-			else if(dlgStaffInput.getBtnSave().getText().equals("Update")) updateStaff();
+			saveStaff();
 			
 		});
 	}
@@ -81,39 +79,6 @@ public class DlgStaffInputController {
 		catch(SQLException ex) {
 			JOptionPane.showMessageDialog(null, ex);
 		}
-	}
-	
-	public void updateStaff() {
-		
-		try {
-			staff.setStaffID(Integer.parseInt(dlgStaffInput.getTxtStaffID().getText()));
-			staff.setLastName((dlgStaffInput.getTxtLastName().getText()));
-			staff.setFirstName(dlgStaffInput.getTxtFirstName().getText());
-			staff.setMidName(dlgStaffInput.getTxtMidName().getText());
-			staff.setPosition(dlgStaffInput.getTxtPosition().getText());
-			staff.setIsEmployed(dlgStaffInput.getRdbEmployed().isSelected() ? true:false);
-			
-			pst=sqlConn.prepareStatement("update tblstaff set last_name=?,first_name=?,middle_name=?,position=?,still_employed=? where staff_id=?");
-			pst.setString(1, staff.getLastName());
-			pst.setString(2, staff.getFirstName());
-			pst.setString(3, staff.getMidName());
-			pst.setString(4, staff.getPosition());
-			pst.setBoolean(5, staff.getIsEmployed());
-			pst.setInt(6, staff.getStaffID());
-			
-			int i=pst.executeUpdate();
-			if(i==1) {
-				JOptionPane.showMessageDialog(null,"Staff " + staff.getName() + " has been updated!","Updated",JOptionPane.INFORMATION_MESSAGE);
-				refreshTable();
-				dlgStaffInput.dispose();
-			}
-			
-		}
-		catch(SQLException ex) {
-			JOptionPane.showMessageDialog(null, ex);
-		}
-		
-		
 	}
 	
 	public void getData() {
