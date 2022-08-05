@@ -243,5 +243,19 @@ public class StaffInputDialog extends JDialog {
 	public DefaultTableModel getTableModel() {
 		return tableModel;
 	}
+	public StaffForm getFrmStaff() {
+		return frmStaff;
+	}
 	
+	public JPanel getRadioPanel() {
+		return radioPanel;
+	}
+	
+	public JRadioButton getRdbEmployed() {
+		return rdbEmployed;
+	}
+	
+	public JRadioButton getrdbNemployed() {
+		return rdbNemployed;
+	}
 }

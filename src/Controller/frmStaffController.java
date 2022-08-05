@@ -42,14 +42,30 @@ public class FrmStaffController {
 			dlgStaffInput =new StaffInputDialog(frmStaff);
 			dlgStaffInput.getTxtStaffID().setText(String.valueOf(staff.getStaffID()+1));
 			dlgStaffController =new DlgStaffInputController(dlgStaffInput,staff);
+			dlgStaffInput.getRadioPanel().setVisible(false);
 			dlgStaffInput.setVisible(true);
 			
 			
 		});
 		
+		frmStaff.getBtnEdit().addActionListener((ActionEvent e)->{
+			
+			dlgStaffInput=new StaffInputDialog(frmStaff);
+			dlgStaffController=new DlgStaffInputController(dlgStaffInput,staff);
+			
+			dlgStaffInput.getTxtStaffID().setText(String.valueOf(staff.getStaffID()));
+			dlgStaffInput.getTxtLastName().setText(staff.getLastName());
+			dlgStaffInput.getTxtFirstName().setText(staff.getFirstName());
+			dlgStaffInput.getTxtMidName().setText(staff.getMidName());
+			dlgStaffInput.getTxtPosition().setText(staff.getPosition());
+			if(staff.getIsEmployed()) dlgStaffInput.getRdbEmployed().setSelected(true);
+			else dlgStaffInput.getrdbNemployed().setSelected(true);
+			dlgStaffInput.getBtnSave().setText("Update");
+			dlgStaffInput.setVisible(true);
+		
+		});
 		frmStaff.getBtnDelete().addActionListener((ActionEvent e)->{
-			
-			
+			deleteStaff();
 		});
 		
 		frmStaff.getTable().addMouseListener(new MouseAdapter() {
@@ -59,7 +75,8 @@ public class FrmStaffController {
 				try {
 					if(e.getClickCount()==1) {
 						getTableData();
-						
+						frmStaff.getBtnEdit().setEnabled(true);
+						frmStaff.getBtnDelete().setEnabled(true);
 					}
 					
 				}catch(Exception ex) {}
@@ -132,9 +149,38 @@ public class FrmStaffController {
 			//System.out.println("Staff ID: "+staff.getStaffID());
 			
 			
-		}catch(SQLException ex) {
+		}
+		catch(SQLException ex) {
 			JOptionPane.showMessageDialog(null, ex);
 		}
+	}
+	
+	public void deleteStaff() {
+		int reply=JOptionPane.showConfirmDialog(null, "Are you sure you want to delete this staff?","Are you sure?",JOptionPane.YES_NO_OPTION);
+		
+		if(reply==JOptionPane.YES_OPTION) {
+			try {
+				pst=sqlConn.prepareStatement("delete from tblstaff where staff_id=?");
+				pst.setInt(1, staff.getStaffID());
+				
+				int i=pst.executeUpdate();
+				if(i==1) {
+					JOptionPane.showMessageDialog(null, "Staff" + staff.getName() + " has been deleted!","Deleted",JOptionPane.INFORMATION_MESSAGE);
+					reload();
+				}
+			}
+			catch(SQLException ex) {
+				ex.printStackTrace();
+			}
+		}
+	}
+	
+	public void reload() {
+		staff.setStaffID(0);
+		frmStaff.getBtnEdit().setEnabled(false);
+		frmStaff.getBtnDelete().setEnabled(false);
+		frmStaff.getTable().getSelectionModel().clearSelection();
+		displayUserTable();
 	}
 	
 }

@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
 
 import DBConnection.SetConnect;
 import Model.Staff;
@@ -16,7 +17,7 @@ import View.StaffInputDialog;
 public class DlgStaffInputController {
 	private StaffInputDialog dlgStaffInput;
 	private Staff staff; 
-	private boolean isEmployed=true;
+	private boolean isEmployed;
 	SetConnect connect;
 	Connection sqlConn;
 	ResultSet rs;
@@ -36,7 +37,9 @@ public class DlgStaffInputController {
 		});
 		
 		dlgStaffInput.getBtnSave().addActionListener((ActionEvent e)->{
-			saveStaff();
+		
+			if(dlgStaffInput.getBtnSave().getText().equals("Save")) saveStaff();
+			else if(dlgStaffInput.getBtnSave().getText().equals("Update")) updateStaff();
 			
 		});
 	}
@@ -67,6 +70,8 @@ public class DlgStaffInputController {
 					JOptionPane.showMessageDialog(null,"Staff " + staff.getName() 
 					+ " has been saved!","Saved", JOptionPane.INFORMATION_MESSAGE);
 					refreshTable();
+					dlgStaffInput.getFrmStaff().getBtnDelete().setEnabled(false);
+					dlgStaffInput.getFrmStaff().getBtnEdit().setEnabled(false);
 					dlgStaffInput.dispose();
 					
 					
@@ -81,13 +86,43 @@ public class DlgStaffInputController {
 		}
 	}
 	
+	public void updateStaff() {
+		getData();
+		try {
+			pst=sqlConn.prepareStatement("update tblstaff set last_name =?, first_name=?, middle_name=?, position=?, still_employed=? where staff_id=?");
+			pst.setString(1, staff.getLastName());
+			pst.setString(2, staff.getFirstName());
+			pst.setString(3, staff.getMidName());
+			pst.setString(4, staff.getPosition());
+			pst.setBoolean(5, staff.getIsEmployed());
+			pst.setInt(6, staff.getStaffID());
+			
+			int i=pst.executeUpdate();
+			
+			if(i==1) {
+				JOptionPane.showMessageDialog(null, "Staff " + staff.getName() + " has been updated!", "Updated", JOptionPane.INFORMATION_MESSAGE);
+				refreshTable();
+				dlgStaffInput.getFrmStaff().getBtnDelete().setEnabled(false);
+				dlgStaffInput.getFrmStaff().getBtnEdit().setEnabled(false);
+				dlgStaffInput.dispose();
+				
+			}
+		}
+		catch(SQLException ex) {
+			ex.printStackTrace();
+		}
+	}
+	
 	public void getData() {
 		staff.setStaffID(Integer.parseInt(dlgStaffInput.getTxtStaffID().getText()));
 		staff.setLastName(dlgStaffInput.getTxtLastName().getText());
 		staff.setFirstName(dlgStaffInput.getTxtFirstName().getText());
 		staff.setMidName(dlgStaffInput.getTxtMidName().getText().isEmpty() ? "N/A":dlgStaffInput.getTxtMidName().getText());
 		staff.setPosition(dlgStaffInput.getTxtPosition().getText());
+		
+		isEmployed=dlgStaffInput.getRdbEmployed().isSelected() ? true:false;
 		staff.setIsEmployed(isEmployed);
+		
 	}
 	public void refreshTable() {
 		try {

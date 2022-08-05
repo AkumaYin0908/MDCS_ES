@@ -39,6 +39,7 @@ public class StaffForm extends JDialog {
 	private JPanel buttonPanel;
 	private JButton btnAdd;
 	private JButton btnEdit;
+	private JButton btnDelete;
 	
 	/**************************************************	STAFFFORM CONSTRUCTOR ****************************************/
 	
@@ -176,7 +177,7 @@ public class StaffForm extends JDialog {
 		buttonPanel = new JPanel();
 		buttonPanel.setOpaque(false);
 		getContentPane().add(buttonPanel, "cell 0 2, height 60!");
-		buttonPanel.setLayout(new MigLayout("", "100[center,90!][center,90!]0"));
+		buttonPanel.setLayout(new MigLayout("", "60[90!,center][90!,center][90!, center]", "[]"));
 		
 		btnAdd = new JButton("Add");
 		btnAdd.setPreferredSize(new Dimension(90, 45));
@@ -200,6 +201,17 @@ public class StaffForm extends JDialog {
 		btnEdit.setBackground(new Color(128, 0, 0));
 		btnEdit.setIcon(new ImageIcon(editIcon));
 		buttonPanel.add(btnEdit, "cell 1 0");
+		
+		btnDelete = new JButton("Delete");
+		btnDelete.setPreferredSize(new Dimension(90, 45));
+		btnDelete.setMargin(new Insets(2, 14, 2, 2));
+		btnDelete.setHorizontalAlignment(SwingConstants.LEFT);
+		btnDelete.setForeground(Color.WHITE);
+		btnDelete.setFont(new Font("Roboto", Font.BOLD, 12));
+		btnDelete.setEnabled(false);
+		btnDelete.setBackground(new Color(128, 0, 0));
+		btnDelete.setIcon(new ImageIcon(deleteIcon));
+		buttonPanel.add(btnDelete, "cell 2 0");
 	}
 	
 	/**************************************************	INITIALIZE METHOD ****************************************/
