@@ -41,7 +41,7 @@ public class Menu extends JPanel {
 		panel.setLayout(layout);
 		
 		scrollPane = new JScrollPane();
-		scrollPane.setBounds(0, 129, 230, 446);
+		scrollPane.setBounds(0, 130, 230, 445);
 		scrollPane.setBorder(null);
 		scrollPane.setOpaque(false);
 		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
@@ -106,7 +106,7 @@ public class Menu extends JPanel {
 			ImageIcon forAbtIcon=new ImageIcon(getClass().getResource("/icons/about.png"));
 			Image abtIcon=forAbtIcon.getImage().getScaledInstance(24,24,Image.SCALE_SMOOTH);
 			
-			ImageIcon forLogIcon=new ImageIcon(getClass().getResource("/icons/students.png"));
+			ImageIcon forLogIcon=new ImageIcon(getClass().getResource("/icons/logout.png"));
 			Image logIcon=forLogIcon.getImage().getScaledInstance(24,24,Image.SCALE_SMOOTH);
 			
 			addMenu(new ModelMenu(new ImageIcon(studIcon), "Student", "Enroll Student", "Enrolled Students", "Students List","Student Profile"));

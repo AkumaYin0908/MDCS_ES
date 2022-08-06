@@ -224,7 +224,7 @@ public class StaffForm extends JDialog {
 		
 		layout=new MigLayout("fillx", "0[fill]0", "0[40.00,top,fill]0[]0[grow]0[]0");//"fill", "0[]0[100%,fill]0", "0[top,fill]0[]0"
 		setUndecorated(true);
-		setBounds(100, 100, 400, 420);
+		setBounds(0, 0, 400, 420);
 		setLocationRelativeTo(null);
 		getContentPane().setLayout(layout);
 		getRootPane().setBorder(BorderFactory.createLineBorder(new Color(128,0,0)));

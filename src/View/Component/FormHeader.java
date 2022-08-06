@@ -38,7 +38,7 @@ public class FormHeader extends JPanel {
 		btnClose.setForeground(Color.WHITE);
 		btnClose.setFont(new Font("Roboto", Font.BOLD, 12));
 		btnClose.setBackground(new Color(128, 0, 0));
-		add(btnClose, "cell 1 0,alignx right");
+		add(btnClose, "cell 1 0 ,alignx right");
 	}
 	
 	public JButton CloseButton() {
