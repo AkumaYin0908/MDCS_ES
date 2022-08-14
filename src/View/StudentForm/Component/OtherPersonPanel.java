@@ -43,14 +43,14 @@ public class OtherPersonPanel extends JPanel {
 		panel = new JPanel();
 		panel.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(128, 0, 0)));
 		panel.setBackground(Color.DARK_GRAY);
-		panel.setBounds(10, 11, 700, 365);
+		panel.setBounds(10, 11, 680, 365);
 		add(panel);
 		panel.setLayout(null);
 		
 		JPanel guardianPanel = new JPanel();
 		guardianPanel.setOpaque(false);
 		guardianPanel.setBackground(Color.DARK_GRAY);
-		guardianPanel.setBounds(10, 5, 680, 270);
+		guardianPanel.setBounds(10, 5, 660, 270);
 		guardianPanel.setBorder(new TitledBorder(new LineBorder(new Color(255, 255, 255)), "Guardian's Information", TitledBorder.LEADING, TitledBorder.TOP, new Font("Roboto", Font.PLAIN,12), new Color(255, 255, 255)));
 		panel.add(guardianPanel);
 		guardianPanel.setLayout(new MigLayout("", "[300,grow][300,grow]", "[][][][][]"));
@@ -215,7 +215,7 @@ public class OtherPersonPanel extends JPanel {
 		repPanel.setOpaque(false);
 		repPanel.setBorder(new TitledBorder(new LineBorder(new Color(255, 255, 255)), "Authorized Representative's Information", TitledBorder.LEADING, TitledBorder.TOP, new Font("Roboto",Font.PLAIN,12), new Color(255, 255, 255)));
 		repPanel.setBackground(Color.DARK_GRAY);
-		repPanel.setBounds(10, 286, 680, 72);
+		repPanel.setBounds(10, 286, 660, 72);
 		panel.add(repPanel);
 		repPanel.setLayout(new MigLayout("", "[326px][326px][326px]", "[36px,fill]"));
 		

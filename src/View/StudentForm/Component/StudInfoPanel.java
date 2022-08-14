@@ -36,6 +36,7 @@ import javax.swing.JScrollBar;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.LineBorder;
 import javax.swing.SwingConstants;
+import javax.swing.JCheckBox;
 
 public class StudInfoPanel extends JPanel {
 	private JPanel studInfoPanel;
@@ -62,7 +63,7 @@ public class StudInfoPanel extends JPanel {
 	private JPanel picPanel;
 	private JPanel docPanel;
 	private JLabel lblNewLabel;
-	
+	private JButton btnUpload;
 	/**
 	 * Create the panel.
 	 */
@@ -79,12 +80,14 @@ public class StudInfoPanel extends JPanel {
 	public void init() {
 		
 		/**************************************************	MAIN PANEL ****************************************/
+		setLayout(null);
 		
 		mainPanel = new JPanel();
+		mainPanel.setBounds(1, 5, 820, 410);
 		mainPanel.setOpaque(false);
 		mainPanel.setBackground(Color.DARK_GRAY);
 		mainPanel.setLayout(null);
-		mainPanel.setPreferredSize(new Dimension(820,420));
+		mainPanel.setPreferredSize(new Dimension(820, 410));
 		add(mainPanel);
 	
 		/**************************************************	STUDINFO PANEL ****************************************/
@@ -327,12 +330,13 @@ public class StudInfoPanel extends JPanel {
 		picPanel.setLayout(null);
 		
 		lblNewLabel = new JLabel("Upload here");
+		lblNewLabel.setForeground(Color.WHITE);
 		lblNewLabel.setFont(new Font("Roboto", Font.PLAIN, 15));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setBounds(10, 11, 224, 215);
 		picPanel.add(lblNewLabel);
 		
-		JButton btnUpload = new JButton("Upload");
+		btnUpload = new JButton("Upload");
 		btnUpload.setFocusable(false);
 		btnUpload.setRequestFocusEnabled(false);
 		btnUpload.setBackground(new Color(128, 0, 0));
@@ -348,6 +352,84 @@ public class StudInfoPanel extends JPanel {
 		docPanel.setBounds(564, 11, 244, 84);
 		mainPanel.add(docPanel);
 		
+		JPanel studOPanel = new JPanel();
+		studOPanel.setOpaque(false);
+		studOPanel.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(128, 0, 0)));
+		studOPanel.setBounds(11, 426, 801, 65);
+		add(studOPanel);
+		studOPanel.setLayout(new MigLayout("fillx", "[100,fill][100,fill][100]40[grow]", "0[grow]0"));
+		
+		JComboBox cbxGrade = new JComboBox();
+		cbxGrade.setBorder(new TitledBorder(new LineBorder(new Color(128, 0, 0)), "Grade", TitledBorder.LEADING, TitledBorder.TOP, null, Color.WHITE));
+		cbxGrade.setBackground(Color.DARK_GRAY);
+		cbxGrade.setFocusable(false);
+		cbxGrade.setRequestFocusEnabled(false);
+		cbxGrade.setOpaque(false);
+		cbxGrade.setForeground(Color.WHITE);
+		cbxGrade.setFont(new Font("Roboto", Font.PLAIN, 12));
+		cbxGrade.setBounds(10, 7, 100, 41);
+		studOPanel.add(cbxGrade,"cell 0 0,growx");
+		
+		JComboBox cbxLevel = new JComboBox();
+		cbxLevel.setBorder(new TitledBorder(new LineBorder(new Color(128, 0, 0)), "Level", TitledBorder.LEADING, TitledBorder.TOP, null, Color.WHITE));
+		cbxLevel.setBackground(Color.DARK_GRAY);
+		cbxLevel.setFocusable(false);
+		cbxLevel.setRequestFocusEnabled(false);
+		cbxLevel.setOpaque(false);
+		cbxLevel.setForeground(Color.WHITE);
+		cbxLevel.setFont(new Font("Roboto", Font.PLAIN, 12));
+		cbxLevel.setBounds(120, 7, 100, 41);
+		studOPanel.add(cbxLevel,"cell 1 0,growx");
+		
+		JComboBox cbxSyear = new JComboBox();
+		cbxSyear.setBorder(new TitledBorder(new LineBorder(new Color(128, 0, 0)), "School Year", TitledBorder.LEADING, TitledBorder.TOP, null, Color.WHITE));
+		cbxSyear.setBackground(Color.DARK_GRAY);
+		cbxSyear.setFocusable(false);
+		cbxSyear.setRequestFocusEnabled(false);
+		cbxSyear.setOpaque(false);
+		cbxSyear.setForeground(Color.WHITE);
+		cbxSyear.setFont(new Font("Roboto", Font.PLAIN, 12));
+		cbxSyear.setBounds(230, 7, 100, 41);
+		studOPanel.add(cbxSyear,"cell 2 0,growx"); 
+		
+		JPanel honorPanel = new JPanel();
+		honorPanel.setOpaque(false);
+		studOPanel.add(honorPanel, "cell 3 0,grow");
+		honorPanel.setLayout(null);
+		
+		JCheckBox chkHonor = new JCheckBox("Are you a 1st/2nd honor from your most recent year? ");
+		chkHonor.setForeground(Color.WHITE);
+		chkHonor.setOpaque(false);
+		chkHonor.setFont(new Font("Roboto", Font.PLAIN, 12));
+		chkHonor.setBounds(5, 7, 427, 23);
+		honorPanel.add(chkHonor);
+		
+		JLabel lblYhonor = new JLabel("If yes,which of these did you achieve?");
+		lblYhonor.setVisible(false);
+		lblYhonor.setForeground(Color.WHITE);
+		lblYhonor.setFont(new Font("Roboto", Font.PLAIN, 12));
+		lblYhonor.setBounds(10,35, 207, 14);
+		honorPanel.add(lblYhonor);
+		
+		ButtonGroup btnGrpHonor=new ButtonGroup();
+		JRadioButton rdbFirst = new JRadioButton("1st Honor");
+		rdbFirst.setVisible(false);
+		rdbFirst.setForeground(Color.WHITE);
+		rdbFirst.setOpaque(false);
+		rdbFirst.setFont(new Font("Roboto", Font.PLAIN, 12));
+		rdbFirst.setBounds(210, 30, 109, 23);
+		honorPanel.add(rdbFirst);
+		
+		JRadioButton rdbSecond = new JRadioButton("2nd Honor");
+		rdbSecond.setVisible(false);
+		rdbSecond.setForeground(Color.WHITE);
+		rdbSecond.setOpaque(false);
+		
+		rdbSecond.setFont(new Font("Roboto", Font.PLAIN, 12));
+		rdbSecond.setBounds(287, 30, 109, 23);
+		honorPanel.add(rdbSecond);
+		btnGrpHonor.add(rdbFirst);
+		btnGrpHonor.add(rdbSecond);
 		
 		
 		
