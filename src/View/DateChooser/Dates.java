@@ -143,281 +143,288 @@ public final class Dates extends javax.swing.JPanel {
         cmd41 = new View.DateChooser.Button();
         cmd42 = new View.DateChooser.Button();
 
-        setBackground(new java.awt.Color(255, 255, 255));
+        setBackground(Color.DARK_GRAY);
         setLayout(new java.awt.GridLayout(7, 7));
 
         cmdMo.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 5, 1));
+        cmdMo.setBackground(Color.DARK_GRAY);
         cmdMo.setForeground(new java.awt.Color(118, 118, 118));
         cmdMo.setText("Mo");
         add(cmdMo);
 
         cmdTu.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 5, 1));
+        cmdTu.setBackground(Color.DARK_GRAY);
         cmdTu.setForeground(new java.awt.Color(118, 118, 118));
         cmdTu.setText("Tu");
         add(cmdTu);
 
         cmdWe.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 5, 1));
+        cmdWe.setBackground(Color.DARK_GRAY);
         cmdWe.setForeground(new java.awt.Color(118, 118, 118));
         cmdWe.setText("We");
         add(cmdWe);
 
         cmdTh.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 5, 1));
+        cmdTh.setBackground(Color.DARK_GRAY);
         cmdTh.setForeground(new java.awt.Color(118, 118, 118));
         cmdTh.setText("Th");
         add(cmdTh);
 
         cmdFr.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 5, 1));
+        cmdFr.setBackground(Color.DARK_GRAY);
         cmdFr.setForeground(new java.awt.Color(118, 118, 118));
         cmdFr.setText("Fr");
         add(cmdFr);
 
         cmdSa.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 5, 1));
+        cmdSa.setBackground(Color.DARK_GRAY);
         cmdSa.setForeground(new java.awt.Color(118, 118, 118));
         cmdSa.setText("Sa");
         add(cmdSa);
 
         cmdSu.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 5, 1));
+        cmdSu.setBackground(Color.DARK_GRAY);
         cmdSu.setForeground(new java.awt.Color(255, 1, 1));
         cmdSu.setText("Su");
         add(cmdSu);
 
-        cmd1.setBackground(new java.awt.Color(255, 255, 255));
+        cmd1.setBackground(Color.DARK_GRAY);
         cmd1.setForeground(new java.awt.Color(75, 75, 75));
         cmd1.setName("day"); // NOI18N
         add(cmd1);
 
-        cmd2.setBackground(new java.awt.Color(255, 255, 255));
+        cmd2.setBackground(Color.DARK_GRAY);
         cmd2.setForeground(new java.awt.Color(75, 75, 75));
         cmd2.setName("day"); // NOI18N
         add(cmd2);
 
-        cmd3.setBackground(new java.awt.Color(255, 255, 255));
+        cmd3.setBackground(Color.DARK_GRAY);
         cmd3.setForeground(new java.awt.Color(75, 75, 75));
         cmd3.setText("1");
         cmd3.setName("day"); // NOI18N
         add(cmd3);
 
-        cmd4.setBackground(new java.awt.Color(255, 255, 255));
+        cmd4.setBackground(Color.DARK_GRAY);
         cmd4.setForeground(new java.awt.Color(75, 75, 75));
         cmd4.setText("2");
         cmd4.setName("day"); // NOI18N
         add(cmd4);
 
-        cmd5.setBackground(new java.awt.Color(255, 255, 255));
+        cmd5.setBackground(Color.DARK_GRAY);
         cmd5.setForeground(new java.awt.Color(75, 75, 75));
         cmd5.setText("3");
         cmd5.setName("day"); // NOI18N
         add(cmd5);
 
-        cmd6.setBackground(new java.awt.Color(255, 255, 255));
+        cmd6.setBackground(Color.DARK_GRAY);
         cmd6.setForeground(new java.awt.Color(75, 75, 75));
         cmd6.setText("4");
         cmd6.setName("day"); // NOI18N
         add(cmd6);
 
-        cmd7.setBackground(new java.awt.Color(255, 255, 255));
+        cmd7.setBackground(Color.DARK_GRAY);
         cmd7.setForeground(new java.awt.Color(75, 75, 75));
         cmd7.setText("5");
         cmd7.setName("day"); // NOI18N
         add(cmd7);
 
-        cmd8.setBackground(new java.awt.Color(255, 255, 255));
+        cmd8.setBackground(Color.DARK_GRAY);
         cmd8.setForeground(new java.awt.Color(75, 75, 75));
         cmd8.setText("6");
         cmd8.setName("day"); // NOI18N
         add(cmd8);
 
-        cmd9.setBackground(new java.awt.Color(255, 255, 255));
+        cmd9.setBackground(Color.DARK_GRAY);
         cmd9.setForeground(new java.awt.Color(75, 75, 75));
         cmd9.setText("7");
         cmd9.setName("day"); // NOI18N
         add(cmd9);
 
-        cmd10.setBackground(new java.awt.Color(255, 255, 255));
+        cmd10.setBackground(Color.DARK_GRAY);
         cmd10.setForeground(new java.awt.Color(75, 75, 75));
         cmd10.setText("8");
         cmd10.setName("day"); // NOI18N
         add(cmd10);
 
-        cmd11.setBackground(new java.awt.Color(255, 255, 255));
+        cmd11.setBackground(Color.DARK_GRAY);
         cmd11.setForeground(new java.awt.Color(75, 75, 75));
         cmd11.setText("9");
         cmd11.setName("day"); // NOI18N
         add(cmd11);
 
-        cmd12.setBackground(new java.awt.Color(255, 255, 255));
+        cmd12.setBackground(Color.DARK_GRAY);
         cmd12.setForeground(new java.awt.Color(75, 75, 75));
         cmd12.setText("10");
         cmd12.setName("day"); // NOI18N
         add(cmd12);
 
-        cmd13.setBackground(new java.awt.Color(255, 255, 255));
+        cmd13.setBackground(Color.DARK_GRAY);
         cmd13.setForeground(new java.awt.Color(75, 75, 75));
         cmd13.setText("11");
         cmd13.setName("day"); // NOI18N
         add(cmd13);
 
-        cmd14.setBackground(new java.awt.Color(255, 255, 255));
+        cmd14.setBackground(Color.DARK_GRAY);
         cmd14.setForeground(new java.awt.Color(75, 75, 75));
         cmd14.setText("12");
         cmd14.setName("day"); // NOI18N
         add(cmd14);
 
-        cmd15.setBackground(new java.awt.Color(255, 255, 255));
+        cmd15.setBackground(Color.DARK_GRAY);
         cmd15.setForeground(new java.awt.Color(75, 75, 75));
         cmd15.setText("13");
         cmd15.setName("day"); // NOI18N
         add(cmd15);
 
-        cmd16.setBackground(new java.awt.Color(255, 255, 255));
+        cmd16.setBackground(Color.DARK_GRAY);
         cmd16.setForeground(new java.awt.Color(75, 75, 75));
         cmd16.setText("14");
         cmd16.setName("day"); // NOI18N
         add(cmd16);
 
-        cmd17.setBackground(new java.awt.Color(255, 255, 255));
+        cmd17.setBackground(Color.DARK_GRAY);
         cmd17.setForeground(new java.awt.Color(75, 75, 75));
         cmd17.setText("15");
         cmd17.setName("day"); // NOI18N
         add(cmd17);
 
-        cmd18.setBackground(new java.awt.Color(255, 255, 255));
+        cmd18.setBackground(Color.DARK_GRAY);
         cmd18.setForeground(new java.awt.Color(75, 75, 75));
         cmd18.setText("16");
         cmd18.setName("day"); // NOI18N
         add(cmd18);
 
-        cmd19.setBackground(new java.awt.Color(255, 255, 255));
+        cmd19.setBackground(Color.DARK_GRAY);
         cmd19.setForeground(new java.awt.Color(75, 75, 75));
         cmd19.setText("17");
         cmd19.setName("day"); // NOI18N
         add(cmd19);
 
-        cmd20.setBackground(new java.awt.Color(255, 255, 255));
+        cmd20.setBackground(Color.DARK_GRAY);
         cmd20.setForeground(new java.awt.Color(75, 75, 75));
         cmd20.setText("18");
         cmd20.setName("day"); // NOI18N
         add(cmd20);
 
-        cmd21.setBackground(new java.awt.Color(255, 255, 255));
+        cmd21.setBackground(Color.DARK_GRAY);
         cmd21.setForeground(new java.awt.Color(75, 75, 75));
         cmd21.setText("19");
         cmd21.setName("day"); // NOI18N
         add(cmd21);
 
-        cmd22.setBackground(new java.awt.Color(255, 255, 255));
+        cmd22.setBackground(Color.DARK_GRAY);
         cmd22.setForeground(new java.awt.Color(75, 75, 75));
         cmd22.setText("20");
         cmd22.setName("day"); // NOI18N
         add(cmd22);
 
-        cmd23.setBackground(new java.awt.Color(255, 255, 255));
+        cmd23.setBackground(Color.DARK_GRAY);
         cmd23.setForeground(new java.awt.Color(75, 75, 75));
         cmd23.setText("21");
         cmd23.setName("day"); // NOI18N
         add(cmd23);
 
-        cmd24.setBackground(new java.awt.Color(255, 255, 255));
+        cmd24.setBackground(Color.DARK_GRAY);
         cmd24.setForeground(new java.awt.Color(75, 75, 75));
         cmd24.setText("22");
         cmd24.setName("day"); // NOI18N
         add(cmd24);
 
-        cmd25.setBackground(new java.awt.Color(255, 255, 255));
+        cmd25.setBackground(Color.DARK_GRAY);
         cmd25.setForeground(new java.awt.Color(75, 75, 75));
         cmd25.setText("23");
         cmd25.setName("day"); // NOI18N
         add(cmd25);
 
-        cmd26.setBackground(new java.awt.Color(255, 255, 255));
+        cmd26.setBackground(Color.DARK_GRAY);
         cmd26.setForeground(new java.awt.Color(75, 75, 75));
         cmd26.setText("24");
         cmd26.setName("day"); // NOI18N
         add(cmd26);
 
-        cmd27.setBackground(new java.awt.Color(255, 255, 255));
+        cmd27.setBackground(Color.DARK_GRAY);
         cmd27.setForeground(new java.awt.Color(75, 75, 75));
         cmd27.setText("25");
         cmd27.setName("day"); // NOI18N
         add(cmd27);
 
-        cmd28.setBackground(new java.awt.Color(255, 255, 255));
-        cmd28.setForeground(new java.awt.Color(75, 75, 75));
+        cmd28.setBackground(Color.DARK_GRAY);
+        cmd28.setForeground(Color.DARK_GRAY);
         cmd28.setText("26");
         cmd28.setName("day"); // NOI18N
         add(cmd28);
 
-        cmd29.setBackground(new java.awt.Color(255, 255, 255));
-        cmd29.setForeground(new java.awt.Color(75, 75, 75));
+        cmd29.setBackground(Color.DARK_GRAY);
+        cmd29.setForeground(Color.DARK_GRAY);
         cmd29.setText("27");
         cmd29.setName("day"); // NOI18N
         add(cmd29);
 
-        cmd30.setBackground(new java.awt.Color(255, 255, 255));
+        cmd30.setBackground(Color.DARK_GRAY);
         cmd30.setForeground(new java.awt.Color(75, 75, 75));
         cmd30.setText("28");
         cmd30.setName("day"); // NOI18N
         add(cmd30);
 
-        cmd31.setBackground(new java.awt.Color(255, 255, 255));
+        cmd31.setBackground(Color.DARK_GRAY);
         cmd31.setForeground(new java.awt.Color(75, 75, 75));
         cmd31.setText("29");
         cmd31.setName("day"); // NOI18N
         add(cmd31);
 
-        cmd32.setBackground(new java.awt.Color(255, 255, 255));
+        cmd32.setBackground(Color.DARK_GRAY);
         cmd32.setForeground(new java.awt.Color(75, 75, 75));
         cmd32.setText("30");
         cmd32.setName("day"); // NOI18N
         add(cmd32);
 
-        cmd33.setBackground(new java.awt.Color(255, 255, 255));
+        cmd33.setBackground(Color.DARK_GRAY);
         cmd33.setForeground(new java.awt.Color(75, 75, 75));
         cmd33.setText("31");
         cmd33.setName("day"); // NOI18N
         add(cmd33);
 
-        cmd34.setBackground(new java.awt.Color(255, 255, 255));
+        cmd34.setBackground(Color.DARK_GRAY);
         cmd34.setForeground(new java.awt.Color(75, 75, 75));
         cmd34.setName("day"); // NOI18N
         add(cmd34);
 
-        cmd35.setBackground(new java.awt.Color(255, 255, 255));
+        cmd35.setBackground(Color.DARK_GRAY);
         cmd35.setForeground(new java.awt.Color(75, 75, 75));
         cmd35.setName("day"); // NOI18N
         add(cmd35);
 
-        cmd36.setBackground(new java.awt.Color(255, 255, 255));
+        cmd36.setBackground(Color.DARK_GRAY);
         cmd36.setForeground(new java.awt.Color(75, 75, 75));
         cmd36.setName("day"); // NOI18N
         add(cmd36);
 
-        cmd37.setBackground(new java.awt.Color(255, 255, 255));
+        cmd37.setBackground(Color.DARK_GRAY);
         cmd37.setForeground(new java.awt.Color(75, 75, 75));
         cmd37.setName("day"); // NOI18N
         add(cmd37);
 
-        cmd38.setBackground(new java.awt.Color(255, 255, 255));
+        cmd38.setBackground(Color.DARK_GRAY);
         cmd38.setForeground(new java.awt.Color(75, 75, 75));
         cmd38.setName("day"); // NOI18N
         add(cmd38);
 
-        cmd39.setBackground(new java.awt.Color(255, 255, 255));
+        cmd39.setBackground(Color.DARK_GRAY);
         cmd39.setForeground(new java.awt.Color(75, 75, 75));
         cmd39.setName("day"); // NOI18N
         add(cmd39);
 
-        cmd40.setBackground(new java.awt.Color(255, 255, 255));
+        cmd40.setBackground(Color.DARK_GRAY);
         cmd40.setForeground(new java.awt.Color(75, 75, 75));
         cmd40.setName("day"); // NOI18N
         add(cmd40);
 
-        cmd41.setBackground(new java.awt.Color(255, 255, 255));
+        cmd41.setBackground(Color.DARK_GRAY);
         cmd41.setForeground(new java.awt.Color(75, 75, 75));
         cmd41.setName("day"); // NOI18N
         add(cmd41);
 
-        cmd42.setBackground(new java.awt.Color(255, 255, 255));
+        cmd42.setBackground(Color.DARK_GRAY);
         cmd42.setForeground(new java.awt.Color(75, 75, 75));
         cmd42.setName("day"); // NOI18N
         add(cmd42);

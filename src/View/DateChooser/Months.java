@@ -1,5 +1,7 @@
 package View.DateChooser;
 
+import java.awt.Color;
+
 public final class Months extends javax.swing.JPanel {
 
     private Event event;
@@ -32,7 +34,7 @@ public final class Months extends javax.swing.JPanel {
         cmd11 = new View.DateChooser.Button();
         cmd12 = new View.DateChooser.Button();
 
-        setBackground(new java.awt.Color(255, 255, 255));
+        setBackground(Color.DARK_GRAY);
         setLayout(new java.awt.GridLayout(4, 4));
 
         cmd1.setBackground(new java.awt.Color(255, 255, 255));

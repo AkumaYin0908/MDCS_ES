@@ -41,7 +41,7 @@ public final class DateChooser extends javax.swing.JPanel {
     }
 
     private void execute() {
-        setForeground(new Color(204, 93, 93));
+        setForeground(new Color(128,0,0));
         events = new ArrayList<>();
         popup.add(this);
         toDay(false);
