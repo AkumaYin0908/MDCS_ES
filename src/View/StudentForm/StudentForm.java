@@ -10,6 +10,7 @@ import View.Component.FormHeader;
 import View.MainFrame.Component.Swing.Scrollbar.ScrollBarCustom;
 import View.StudentForm.Component.OtherPersonPanel;
 import View.StudentForm.Component.ParInfoPanel;
+import View.StudentForm.Component.RequirementsPanel;
 import View.StudentForm.Component.SibInfoPanel;
 import View.StudentForm.Component.StudInfoPanel;
 import net.miginfocom.swing.MigLayout;
@@ -76,7 +77,10 @@ public class StudentForm extends JDialog {
 			mainPanel.add(opPanel,"cell 0 2,width 700!,alignx center,height 390!");
 			
 			SibInfoPanel sibiPanel=new SibInfoPanel();
-			mainPanel.add(sibiPanel,"cell 0 3, width 560!, alignx left,height 410!");
+			mainPanel.add(sibiPanel,"cell 0 3, width 550!, alignx center,height 410!");
+			
+			RequirementsPanel reqPanel=new RequirementsPanel();
+			mainPanel.add(reqPanel,"cell 0 3, width 175!,alignx right,height 205!");
 	}
 	
 	public void initialize() {
