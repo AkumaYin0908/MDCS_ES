@@ -11,6 +11,7 @@ import View.MainFrame.Component.Swing.Scrollbar.ScrollBarCustom;
 import View.StudentForm.Component.OtherPersonPanel;
 import View.StudentForm.Component.ParInfoPanel;
 import View.StudentForm.Component.RequirementsPanel;
+import View.StudentForm.Component.SLAPanel;
 import View.StudentForm.Component.SibInfoPanel;
 import View.StudentForm.Component.StudInfoPanel;
 import net.miginfocom.swing.MigLayout;
@@ -87,6 +88,8 @@ public class StudentForm extends JDialog {
 			SibInfoPanel sibiPanel=new SibInfoPanel();
 			contentPanel.add(sibiPanel,"cell 0 3, width 550!, alignx center,height 410!");
 			
+			SLAPanel slaPanel=new SLAPanel();
+			contentPanel.add(slaPanel,"cell 0 4, width 700!, alignx center,height 365!");
 			
 	}
 	

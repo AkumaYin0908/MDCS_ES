@@ -20,6 +20,7 @@ import net.miginfocom.swing.MigLayout;
 import javax.swing.JButton;
 import javax.swing.SwingConstants;
 import java.awt.Insets;
+import javax.swing.border.LineBorder;
 
 public class SLAPanel extends JPanel {
 
@@ -29,9 +30,12 @@ public class SLAPanel extends JPanel {
 	private JButton btnEdit;
 	private JButton btnDelete;
 	public SLAPanel() {
+		setOpaque(false);
+		setBorder(new LineBorder(new Color(128, 0, 0)));
 		setLayout(null);
 		
 		JPanel slaPanel = new JPanel();
+		slaPanel.setOpaque(false);
 		slaPanel.setBounds(10, 11, 685, 280);
 		add(slaPanel);
 		slaPanel.setLayout(new MigLayout("", "[grow,fill]", "[fill]"));
@@ -129,9 +133,10 @@ public class SLAPanel extends JPanel {
 		slaPanel.add(scrollPane, "cell 0 0,grow");
 		
 		JPanel buttonPanel = new JPanel();
+		buttonPanel.setOpaque(false);
 		buttonPanel.setBounds(10, 295, 685, 64);
 		add(buttonPanel);
-		buttonPanel.setLayout(new MigLayout("", "175[grow][grow]20[grow]175", "[]"));
+		buttonPanel.setLayout(new MigLayout("", "175[grow][grow][grow]175", "[]"));
 		
 		btnAdd = new JButton("Add");
 		btnAdd.setPreferredSize(new Dimension(90, 45));
