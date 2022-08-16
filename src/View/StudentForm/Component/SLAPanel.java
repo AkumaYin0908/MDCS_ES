@@ -1,57 +1,46 @@
 package View.StudentForm.Component;
 
-import javax.swing.JPanel;
-import javax.swing.JCheckBox;
-import javax.swing.JLabel;
-
-import net.miginfocom.swing.MigLayout;
-
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.SystemColor;
 
+import javax.swing.BorderFactory;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
-import javax.swing.border.MatteBorder;
-import javax.swing.BorderFactory;
-import javax.swing.JButton;
-import java.awt.CardLayout;
 
-public class SibInfoPanel extends JPanel {
+import net.miginfocom.swing.MigLayout;
+import javax.swing.JButton;
+import javax.swing.SwingConstants;
+import java.awt.Insets;
+
+public class SLAPanel extends JPanel {
+
 	private JTable table;
 	private DefaultTableModel tableModel;
-	
-	public SibInfoPanel() {
-		setOpaque(false);
+	private JButton btnAdd;
+	private JButton btnEdit;
+	private JButton btnDelete;
+	public SLAPanel() {
 		setLayout(null);
 		
-		JPanel sibinfoPanel = new JPanel();
-		sibinfoPanel.setOpaque(false);
-		sibinfoPanel.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(128, 0, 0)));
-		sibinfoPanel.setBounds(10, 11, 540, 388);
-		add(sibinfoPanel);
-		sibinfoPanel.setLayout(new MigLayout("fillx", "[529.00]", "[][311.00][45.00]"));
+		JPanel slaPanel = new JPanel();
+		slaPanel.setBounds(10, 11, 685, 280);
+		add(slaPanel);
+		slaPanel.setLayout(new MigLayout("", "[grow,fill]", "[fill]"));
 		
-		JCheckBox chkSibling = new JCheckBox("Do you have a sibling currently enrolled in Misericordia Dei Catholic School?");
-		chkSibling.setFocusable(false);
-		chkSibling.setRequestFocusEnabled(false);
-		chkSibling.setForeground(Color.WHITE);
-		chkSibling.setOpaque(false);
-		chkSibling.setFont(new Font("Roboto", Font.PLAIN, 12));
-		sibinfoPanel.add(chkSibling, "cell 0 0,growx,aligny top");
-		
-		
-		
+
 		tableModel=new DefaultTableModel(new Object[][] {
 		},
 		new String[] {
-			"Student ID", "Name", "Grade Level", "Age"
+			"School", "Address", "Grade Level", "Period Covered"
 		}
 	);
 		
@@ -89,8 +78,8 @@ public class SibInfoPanel extends JPanel {
 		table.setFont(new Font("Roboto", Font.PLAIN, 12));
 		table.setBackground(Color.DARK_GRAY);
 		table.setModel(tableModel);
-		table.getColumnModel().getColumn(0).setPreferredWidth(5);
-		table.getColumnModel().getColumn(1).setPreferredWidth(100);
+		table.getColumnModel().getColumn(0).setPreferredWidth(170);
+		table.getColumnModel().getColumn(1).setPreferredWidth(170);
 		
 		
 		
@@ -137,18 +126,64 @@ public class SibInfoPanel extends JPanel {
 		scrollPane.setOpaque(false);
 		scrollPane.setViewportView(table);
 		scrollPane.getViewport().setOpaque(false);
-		sibinfoPanel.add(scrollPane, "cell 0 1,grow");
+		slaPanel.add(scrollPane, "cell 0 0,grow");
 		
-		JPanel panel = new JPanel();
-		panel.setOpaque(false);
-		sibinfoPanel.add(panel, "cell 0 2,grow");
-		panel.setLayout(new CardLayout(0, 0));
+		JPanel buttonPanel = new JPanel();
+		buttonPanel.setBounds(10, 295, 685, 64);
+		add(buttonPanel);
+		buttonPanel.setLayout(new MigLayout("", "175[grow][grow]20[grow]175", "[]"));
 		
-		JButton btnConfirm = new JButton("Confirm");
-		btnConfirm.setBackground(new Color(128, 0, 0));
-		btnConfirm.setForeground(Color.WHITE);
-		btnConfirm.setFont(new Font("Roboto", Font.PLAIN, 12));
-		panel.add(btnConfirm, "name_50677006846000");
+		btnAdd = new JButton("Add");
+		btnAdd.setPreferredSize(new Dimension(90, 45));
+		btnAdd.setMargin(new Insets(2, 14, 2, 2));
+		btnAdd.setHorizontalAlignment(SwingConstants.LEFT);
+		btnAdd.setForeground(Color.WHITE);
+		btnAdd.setFont(new Font("Roboto", Font.BOLD, 12));
+		btnAdd.setBackground(new Color(128, 0, 0));
+		buttonPanel.add(btnAdd, "cell 0 0,alignx left,aligny top");
+		
+		btnEdit = new JButton("Edit");
+		btnEdit.setPreferredSize(new Dimension(90, 45));
+		btnEdit.setMargin(new Insets(2, 14, 2, 2));
+		btnEdit.setHorizontalAlignment(SwingConstants.LEFT);
+		btnEdit.setForeground(Color.WHITE);
+		btnEdit.setFont(new Font("Roboto", Font.BOLD, 12));
+		btnEdit.setEnabled(false);
+		btnEdit.setBackground(new Color(128, 0, 0));
+		buttonPanel.add(btnEdit, "cell 1 0,alignx left,aligny top");
+		
+		btnDelete = new JButton("Delete");
+		btnDelete.setPreferredSize(new Dimension(90, 45));
+		btnDelete.setMargin(new Insets(2, 14, 2, 2));
+		btnDelete.setHorizontalAlignment(SwingConstants.LEFT);
+		btnDelete.setForeground(Color.WHITE);
+		btnDelete.setFont(new Font("Roboto", Font.BOLD, 12));
+		btnDelete.setEnabled(false);
+		btnDelete.setBackground(new Color(128, 0, 0));
+		buttonPanel.add(btnDelete, "cell 2 0,alignx left,aligny top");
 
 	}
+	
+	
+	public JTable getTable(){
+		return table;
+	}
+	public DefaultTableModel getTableModel() {
+		return tableModel;
+	}
+
+	public JButton getBtnAdd() {
+		return btnAdd;
+	}
+
+	public JButton getBtnEdit() {
+		return btnEdit;
+	}
+	
+	public JButton getBtnDelete() {
+		return btnDelete;
+	}
+	
+	
+	
 }

@@ -17,6 +17,7 @@ import net.miginfocom.swing.MigLayout;
 import java.awt.BorderLayout;
 import java.awt.Font;
 import java.awt.event.ActionListener;
+import javax.swing.border.LineBorder;
 
 public class StudentForm extends JDialog {
 	
@@ -24,7 +25,7 @@ public class StudentForm extends JDialog {
 	private DragListener drag;
 	private MigLayout layout;
 	private JScrollPane scrollPane;
-	private JPanel mainPanel;
+	private JPanel mainPanel,contentPanel;
 	public StudentForm() {
 		initialize();
 		init();
@@ -47,40 +48,46 @@ public class StudentForm extends JDialog {
 			
 			mainPanel=new JPanel();
 			mainPanel.setOpaque(false);
+			getContentPane().add(mainPanel, "cell 0 1,width 840!,alignx center,height 650!");
+			
+			contentPanel=new JPanel();
+			contentPanel.setBorder(null);
+			contentPanel.setOpaque(false);
+			
 			scrollPane = new JScrollPane();
 			scrollPane.setRequestFocusEnabled(false);
-			scrollPane.setBorder(null);
+			scrollPane.setBorder(new LineBorder(new Color(128, 0, 0)));
 			scrollPane.setFocusable(false);
 			scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 			scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 			scrollPane.setOpaque(false);
 			scrollPane.setViewportBorder(null);
 			scrollPane.getViewport().setOpaque(false);
-			scrollPane.setViewportView(mainPanel);
-			mainPanel.setLayout(new MigLayout("", "[]", "[][]"));
+			scrollPane.setViewportView(contentPanel);
+			contentPanel.setLayout(new MigLayout("", "[]", "[482.00][][][]"));
 			
 			
 			ScrollBarCustom scrollBarCutsom=new ScrollBarCustom();
 			scrollBarCutsom.setForeground(Color.WHITE);
+			mainPanel.setLayout(new MigLayout("", "[839px]", "[2036px]"));
 			scrollPane.setVerticalScrollBar(scrollBarCutsom);
-			getContentPane().add(scrollPane, "cell 0 1");
+			mainPanel.add(scrollPane, "cell 0 0,alignx left,aligny top");
 			
 			StudInfoPanel siPanel=new StudInfoPanel();
 			
-			mainPanel.add(siPanel,"cell 0 0,width 820!,alignx center,height 500!");
+			contentPanel.add(siPanel,"cell 0 0,width 820!,alignx center,height 480!");
 			
 			
 			ParInfoPanel piPanel=new ParInfoPanel();
-			mainPanel.add(piPanel,"cell 0 1,width 700!,alignx center,height 710!");
+			contentPanel.add(piPanel,"cell 0 1,width 700!,alignx center,height 710!");
 			
 			OtherPersonPanel opPanel=new OtherPersonPanel();
-			mainPanel.add(opPanel,"cell 0 2,width 700!,alignx center,height 390!");
+			contentPanel.add(opPanel,"cell 0 2,width 700!,alignx center, height 380!");
 			
 			SibInfoPanel sibiPanel=new SibInfoPanel();
-			mainPanel.add(sibiPanel,"cell 0 3, width 550!, alignx center,height 410!");
+			contentPanel.add(sibiPanel,"cell 0 3, width 550!, alignx center,height 410!");
 			
-			RequirementsPanel reqPanel=new RequirementsPanel();
-			mainPanel.add(reqPanel,"cell 0 3, width 175!,alignx right,height 205!");
+			
 	}
 	
 	public void initialize() {
@@ -90,7 +97,7 @@ public class StudentForm extends JDialog {
 		addMouseListener(drag);
 		addMouseMotionListener(drag);
 		
-		layout=new MigLayout("fill", "0[grow]0[grow]0", "0[40.00,top,fill]10[grow]0");
+		layout=new MigLayout("", "0[]0[]0", "0[]10[grow]0");
 		setUndecorated(true);
 		setSize(840,717);
 		setLocationRelativeTo(null);

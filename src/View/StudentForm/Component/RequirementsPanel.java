@@ -22,11 +22,11 @@ public class RequirementsPanel extends JPanel {
 		setLayout(null);
 		
 		JPanel requirementsPanel=new JPanel();
-		requirementsPanel.setOpaque(false);
-		requirementsPanel.setBounds(5, 10, 165, 185);
+		requirementsPanel.setBackground(Color.DARK_GRAY);
+		requirementsPanel.setBounds(5, 10, 685, 75);
 		
 		requirementsPanel.setBorder(new TitledBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(255, 255, 255)), "Requirements", TitledBorder.LEADING, TitledBorder.TOP, new Font("Roboto",Font.PLAIN,12), Color.WHITE));
-		requirementsPanel.setLayout(new MigLayout("", "[grow,fill]", "[center][40.00,center][51.00,fill][fill]"));
+		requirementsPanel.setLayout(new MigLayout("", "[1156px]", "[51px,grow]"));
 		
 		JCheckBox chkNSO = new JCheckBox("NSO Certificate");
 		chkNSO.setFocusable(false);
@@ -34,7 +34,7 @@ public class RequirementsPanel extends JPanel {
 		chkNSO.setForeground(Color.WHITE);
 		chkNSO.setOpaque(false);
 		chkNSO.setFont(new Font("Roboto", Font.PLAIN, 12));
-		requirementsPanel.add(chkNSO, "cell 0 0");
+		requirementsPanel.add(chkNSO, "cell 0 0,growx,aligny top");
 		
 		JCheckBox chkECD = new JCheckBox("<html>ECD Checklist<br><center>(for Grade I)</center></html>");
 		chkECD.setFocusable(false);
@@ -42,7 +42,7 @@ public class RequirementsPanel extends JPanel {
 		chkECD.setOpaque(false);
 		chkECD.setForeground(Color.WHITE);
 		chkECD.setFont(new Font("Roboto", Font.PLAIN, 12));
-		requirementsPanel.add(chkECD, "cell 0 1");
+		requirementsPanel.add(chkECD, "cell 0 0,growx,aligny top");
 		
 		JCheckBox chkF137 = new JCheckBox("<html>Card/Form 137 or <br> any documents from last school attended</html>");
 		chkF137.setFocusable(false);
@@ -51,7 +51,7 @@ public class RequirementsPanel extends JPanel {
 		chkF137.setOpaque(false);
 		chkF137.setForeground(Color.WHITE);
 		chkF137.setFont(new Font("Roboto", Font.PLAIN, 12));
-		requirementsPanel.add(chkF137, "cell 0 2,aligny top");
+		requirementsPanel.add(chkF137, "cell 0 0,alignx center,growy");
 		
 		JCheckBox chkBaptismal = new JCheckBox("Baptismal Certificate");
 		chkBaptismal.setFocusable(false);
@@ -59,7 +59,7 @@ public class RequirementsPanel extends JPanel {
 		chkBaptismal.setOpaque(false);
 		chkBaptismal.setForeground(Color.WHITE);
 		chkBaptismal.setFont(new Font("Roboto", Font.PLAIN, 12));
-		requirementsPanel.add(chkBaptismal, "cell 0 3");
+		requirementsPanel.add(chkBaptismal, "cell 0 0,growx,aligny top");
 		add(requirementsPanel);
 	}
 

@@ -83,7 +83,7 @@ public class StudInfoPanel extends JPanel {
 		setLayout(null);
 		
 		mainPanel = new JPanel();
-		mainPanel.setBounds(1, 5, 820, 410);
+		mainPanel.setBounds(0, -5, 820, 426);
 		mainPanel.setOpaque(false);
 		mainPanel.setBackground(Color.DARK_GRAY);
 		mainPanel.setLayout(null);
@@ -355,7 +355,7 @@ public class StudInfoPanel extends JPanel {
 		JPanel studOPanel = new JPanel();
 		studOPanel.setOpaque(false);
 		studOPanel.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(128, 0, 0)));
-		studOPanel.setBounds(11, 426, 801, 65);
+		studOPanel.setBounds(9, 410, 799, 65);
 		add(studOPanel);
 		studOPanel.setLayout(new MigLayout("fillx", "[100,fill][100,fill][100]40[grow]", "0[grow]0"));
 		
