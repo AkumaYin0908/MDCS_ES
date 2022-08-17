@@ -1,40 +1,42 @@
 package View.StudentForm.Component;
 
-import javax.swing.JPanel;
-import javax.swing.JCheckBox;
-import javax.swing.JLabel;
-
+import javax.swing.*;
 import net.miginfocom.swing.MigLayout;
-
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.SystemColor;
-
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
-import javax.swing.ListSelectionModel;
-import javax.swing.table.DefaultTableCellRenderer;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableCellRenderer;
+import java.awt.*;
+import javax.swing.table.*;
+import Model.GUICodingFormat;
 import javax.swing.border.MatteBorder;
-import javax.swing.BorderFactory;
-import javax.swing.JButton;
-import java.awt.CardLayout;
 
-public class SibInfoPanel extends JPanel {
+
+public class SibInfoPanel extends JPanel implements GUICodingFormat {
+	
+	private static final long serialVersionUID = 1L;
+	private JPanel sibinfoPanel,buttonPanel;
 	private JTable table;
 	private DefaultTableModel tableModel;
-	
+	private JScrollPane scrollPane;
+	private JButton btnConfirm;
 	public SibInfoPanel() {
+		init();
+		getComponent();
+		
+		
+
+	}
+
+	@Override
+	public void init() {
 		setOpaque(false);
 		setLayout(null);
 		
+	}
+
+	@Override
+	public void getComponent() {
 		JPanel sibinfoPanel = new JPanel();
 		sibinfoPanel.setOpaque(false);
 		sibinfoPanel.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(128, 0, 0)));
-		sibinfoPanel.setBounds(10, 11, 540, 388);
+		sibinfoPanel.setBounds(10, 11, 680, 388);
 		add(sibinfoPanel);
 		sibinfoPanel.setLayout(new MigLayout("fillx", "[529.00]", "[][311.00][45.00]"));
 		
@@ -56,6 +58,9 @@ public class SibInfoPanel extends JPanel {
 	);
 		
 		table = new JTable() {
+		
+			private static final long serialVersionUID = 1L;
+
 			public Component prepareRenderer(TableCellRenderer renderer, int row, int column) {
 	            Component comp = super.prepareRenderer(renderer, row, column);
 	            Color alternateColor = new Color(201,201,201);
@@ -96,9 +101,7 @@ public class SibInfoPanel extends JPanel {
 		
 		
 		DefaultTableCellRenderer r = new DefaultTableCellRenderer() {
-		    /**
-			 * 
-			 */
+		   
 			private static final long serialVersionUID = 1L;
 			Font font = new Font("Roboto",Font.BOLD,12);
 
@@ -130,7 +133,7 @@ public class SibInfoPanel extends JPanel {
 		}
 		
 		
-		JScrollPane scrollPane = new JScrollPane();
+		scrollPane = new JScrollPane();
 		scrollPane.setRequestFocusEnabled(false);
 		scrollPane.setFocusable(false);
 		scrollPane.setBorder(BorderFactory.createEmptyBorder());
@@ -139,16 +142,16 @@ public class SibInfoPanel extends JPanel {
 		scrollPane.getViewport().setOpaque(false);
 		sibinfoPanel.add(scrollPane, "cell 0 1,grow");
 		
-		JPanel panel = new JPanel();
-		panel.setOpaque(false);
-		sibinfoPanel.add(panel, "cell 0 2,grow");
-		panel.setLayout(new CardLayout(0, 0));
+		buttonPanel = new JPanel();
+		buttonPanel.setOpaque(false);
+		sibinfoPanel.add(buttonPanel, "cell 0 2,grow");
+		buttonPanel.setLayout(new CardLayout(100,0));
 		
-		JButton btnConfirm = new JButton("Confirm");
+		btnConfirm = new JButton("Confirm");
 		btnConfirm.setBackground(new Color(128, 0, 0));
 		btnConfirm.setForeground(Color.WHITE);
 		btnConfirm.setFont(new Font("Roboto", Font.PLAIN, 12));
-		panel.add(btnConfirm, "name_50677006846000");
-
+		buttonPanel.add(btnConfirm);
+		
 	}
 }

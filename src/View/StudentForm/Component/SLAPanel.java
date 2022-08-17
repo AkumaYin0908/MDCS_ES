@@ -1,40 +1,44 @@
 package View.StudentForm.Component;
 
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.SystemColor;
+import java.awt.*;
+import javax.swing.*;
+import javax.swing.table.*;
 
-import javax.swing.BorderFactory;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
-import javax.swing.ListSelectionModel;
-import javax.swing.table.DefaultTableCellRenderer;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableCellRenderer;
-
+import Model.GUICodingFormat;
 import net.miginfocom.swing.MigLayout;
-import javax.swing.JButton;
-import javax.swing.SwingConstants;
-import java.awt.Insets;
 import javax.swing.border.LineBorder;
 
-public class SLAPanel extends JPanel {
+public class SLAPanel extends JPanel implements GUICodingFormat{
 
+	
+	private static final long serialVersionUID = 1L;
+	private JPanel slaPanel;
 	private JTable table;
 	private DefaultTableModel tableModel;
-	private JButton btnAdd;
-	private JButton btnEdit;
-	private JButton btnDelete;
+	private JButton btnAdd,btnEdit,btnDelete;
+	
 	public SLAPanel() {
+		init();
+		getComponent();
+		
+
+	}
+	/**************************************************	INIT METHOD ****************************************/
+	@Override
+	public void init() {
 		setOpaque(false);
 		setBorder(new LineBorder(new Color(128, 0, 0)));
 		setLayout(null);
 		
-		JPanel slaPanel = new JPanel();
+		
+	}
+
+
+	/**************************************************	GETCOMPONENT METHOD ****************************************/
+	@Override
+	public void getComponent() {
+		/**************************************************	SCHOOL LAST ATTENDED PANEL ****************************************/
+		slaPanel = new JPanel();
 		slaPanel.setOpaque(false);
 		slaPanel.setBounds(10, 11, 685, 280);
 		add(slaPanel);
@@ -49,6 +53,11 @@ public class SLAPanel extends JPanel {
 	);
 		
 		table = new JTable() {
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
 			public Component prepareRenderer(TableCellRenderer renderer, int row, int column) {
 	            Component comp = super.prepareRenderer(renderer, row, column);
 	            Color alternateColor = new Color(201,201,201);
@@ -166,8 +175,9 @@ public class SLAPanel extends JPanel {
 		btnDelete.setEnabled(false);
 		btnDelete.setBackground(new Color(128, 0, 0));
 		buttonPanel.add(btnDelete, "cell 2 0,alignx left,aligny top");
-
+		
 	}
+	
 	
 	
 	public JTable getTable(){
@@ -188,6 +198,10 @@ public class SLAPanel extends JPanel {
 	public JButton getBtnDelete() {
 		return btnDelete;
 	}
+
+
+
+	
 	
 	
 	

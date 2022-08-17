@@ -8,6 +8,7 @@ import javax.swing.*;
 import OtherGUIFunctionalities.DragListener;
 import View.Component.FormHeader;
 import View.MainFrame.Component.Swing.Scrollbar.ScrollBarCustom;
+import View.StudentForm.Component.ButtonPanel;
 import View.StudentForm.Component.OtherPersonPanel;
 import View.StudentForm.Component.ParInfoPanel;
 import View.StudentForm.Component.RequirementsPanel;
@@ -86,11 +87,16 @@ public class StudentForm extends JDialog {
 			contentPanel.add(opPanel,"cell 0 2,width 700!,alignx center, height 380!");
 			
 			SibInfoPanel sibiPanel=new SibInfoPanel();
-			contentPanel.add(sibiPanel,"cell 0 3, width 550!, alignx center,height 410!");
+			contentPanel.add(sibiPanel,"cell 0 3, width 700!, alignx center,height 410!");
 			
 			SLAPanel slaPanel=new SLAPanel();
 			contentPanel.add(slaPanel,"cell 0 4, width 700!, alignx center,height 365!");
 			
+			RequirementsPanel reqPanel=new RequirementsPanel();
+			contentPanel.add(reqPanel,"cell 0 5, width 700!, alignx center,height 95!");
+			
+			ButtonPanel btnPanel=new ButtonPanel();
+			contentPanel.add(btnPanel,"cell 0 6,width 450!, alignx center, height 60!");
 	}
 	
 	public void initialize() {

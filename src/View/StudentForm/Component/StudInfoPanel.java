@@ -1,84 +1,67 @@
 package View.StudentForm.Component;
 
-import javax.swing.JPanel;
+import javax.swing.*;
+import java.awt.*;
 import net.miginfocom.swing.MigLayout;
-import java.awt.GridLayout;
-import java.awt.GridBagLayout;
-import java.awt.GridBagConstraints;
-import java.awt.Insets;
-import javax.swing.JTextField;
-import javax.swing.border.MatteBorder;
-import javax.swing.border.TitledBorder;
-
+import javax.swing.border.*;
+import Model.GUICodingFormat;
+import OtherGUIFunctionalities.SortedComboBoxModel;
 import View.DateChooser.DateChooser;
-import View.MainFrame.Component.Swing.Scrollbar.ScrollBarCustom;
 
-import java.awt.Font;
-import java.awt.Color;
-import java.awt.Dimension;
 
-import javax.swing.JScrollPane;
-import javax.swing.ScrollPaneConstants;
-import javax.swing.JSeparator;
-import javax.swing.ButtonGroup;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JRadioButton;
-import java.awt.FlowLayout;
-import javax.swing.JComboBox;
-import javax.swing.JLabel;
-import javax.swing.border.EtchedBorder;
-import java.awt.Rectangle;
-import javax.swing.JScrollBar;
-import javax.swing.border.CompoundBorder;
-import javax.swing.border.LineBorder;
-import javax.swing.SwingConstants;
-import javax.swing.JCheckBox;
 
-public class StudInfoPanel extends JPanel {
-	private JPanel studInfoPanel;
+public class StudInfoPanel extends JPanel implements GUICodingFormat {
+	
+	private static final long serialVersionUID = 1L;
+	private JPanel studInfoPanel,mainPanel,picPanel,docPanel,studOPanel;
+	private JPanel genderPanel;
+	private JPanel pobPanel,addPanel;
 	private JTextField txtLastName, txtFirstName,txtMidName,txtNicName;
 	private JTextField txtBday, txtAge;
 	private DateChooser dtChooser;
-	private JPanel genderPanel;
 	private JRadioButton rdbMale,rdbFemale;
 	private ButtonGroup btnGrpGender;
-	private JPanel pobPanel;
-	private JComboBox<String> cbxBarangay;
-	private JComboBox<String> cbxMunCity;
-	private JComboBox<String> cbxProvince;
-	private JPanel addPanel;
-	private JComboBox<String> cbxBarangay1;
-	private JComboBox<String> cbxMunCity1;
-	private JComboBox<String> cbxProvince1;
+	private JComboBox<String> cbxBarangay,cbxMunCity,cbxProvince;
+	private SortedComboBoxModel<String> cbxMBarangay,cbxMMunCity,cbxMProvince;
+	private JComboBox<String> cbxAddBarangay,cbxAddMunCity,cbxAddProvince;
 	private JTextField txtNationality;
 	private JTextField txtReligion;
 	private JTextField txtPostal;
 	private JTextField txtMobileNo;
-	private JButton btnDatePicker;
-	private JPanel mainPanel;
-	private JPanel picPanel;
-	private JPanel docPanel;
 	private JLabel lblNewLabel;
 	private JButton btnUpload;
-	/**
-	 * Create the panel.
-	 */
+	private JComboBox<String> cbxGrade,cbxLevel,cbxSyear;
+	private JPanel honorPanel;
+	private JCheckBox chkHonor;
+	private JLabel lblYhonor;
+	private ButtonGroup btnGrpHonor;
+	private JRadioButton rdbFirst,rdbSecond;
 	public StudInfoPanel() {
 		
-		
-		initialize();
 		init();
+		getComponent();
+		
 		
 		
 	}
 	
 	/**************************************************	INIT METHOD ****************************************/
+	@Override
 	public void init() {
+		setOpaque(false);
+		setBackground(Color.DARK_GRAY);
 		
+		
+		
+		
+		
+		
+	}
+	
+	
+
+	@Override
+	public void getComponent() {
 		/**************************************************	MAIN PANEL ****************************************/
 		setLayout(null);
 		
@@ -257,38 +240,38 @@ public class StudInfoPanel extends JPanel {
 		studInfoPanel.add(addPanel, "cell 3 1,growx,aligny center");
 		addPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
 		
-		cbxBarangay1 = new JComboBox<String>();
-		cbxBarangay1.setRequestFocusEnabled(false);
-		cbxBarangay1.setPreferredSize(new Dimension(75, 25));
-		cbxBarangay1.setOpaque(false);
-		cbxBarangay1.setForeground(Color.WHITE);
-		cbxBarangay1.setFont(new Font("Roboto", Font.PLAIN, 12));
-		cbxBarangay1.setFocusable(false);
-		cbxBarangay1.setBorder(null);
-		cbxBarangay1.setBackground(Color.DARK_GRAY);
-		addPanel.add(cbxBarangay1);
+		cbxAddBarangay = new JComboBox<String>();
+		cbxAddBarangay.setRequestFocusEnabled(false);
+		cbxAddBarangay.setPreferredSize(new Dimension(75, 25));
+		cbxAddBarangay.setOpaque(false);
+		cbxAddBarangay.setForeground(Color.WHITE);
+		cbxAddBarangay.setFont(new Font("Roboto", Font.PLAIN, 12));
+		cbxAddBarangay.setFocusable(false);
+		cbxAddBarangay.setBorder(null);
+		cbxAddBarangay.setBackground(Color.DARK_GRAY);
+		addPanel.add(cbxAddBarangay);
 		
-		cbxMunCity1 = new JComboBox<String>();
-		cbxMunCity1.setRequestFocusEnabled(false);
-		cbxMunCity1.setPreferredSize(new Dimension(75, 25));
-		cbxMunCity1.setOpaque(false);
-		cbxMunCity1.setForeground(Color.WHITE);
-		cbxMunCity1.setFont(new Font("Roboto", Font.PLAIN, 12));
-		cbxMunCity1.setFocusable(false);
-		cbxMunCity1.setBorder(null);
-		cbxMunCity1.setBackground(Color.DARK_GRAY);
-		addPanel.add(cbxMunCity1);
+		cbxAddMunCity = new JComboBox<String>();
+		cbxAddMunCity.setRequestFocusEnabled(false);
+		cbxAddMunCity.setPreferredSize(new Dimension(75, 25));
+		cbxAddMunCity.setOpaque(false);
+		cbxAddMunCity.setForeground(Color.WHITE);
+		cbxAddMunCity.setFont(new Font("Roboto", Font.PLAIN, 12));
+		cbxAddMunCity.setFocusable(false);
+		cbxAddMunCity.setBorder(null);
+		cbxAddMunCity.setBackground(Color.DARK_GRAY);
+		addPanel.add(cbxAddMunCity);
 		
-		cbxProvince1 = new JComboBox<String>();
-		cbxProvince1.setRequestFocusEnabled(false);
-		cbxProvince1.setPreferredSize(new Dimension(75, 25));
-		cbxProvince1.setOpaque(false);
-		cbxProvince1.setForeground(Color.WHITE);
-		cbxProvince1.setFont(new Font("Roboto", Font.PLAIN, 12));
-		cbxProvince1.setFocusable(false);
-		cbxProvince1.setBorder(null);
-		cbxProvince1.setBackground(Color.DARK_GRAY);
-		addPanel.add(cbxProvince1);
+		cbxAddProvince = new JComboBox<String>();
+		cbxAddProvince.setRequestFocusEnabled(false);
+		cbxAddProvince.setPreferredSize(new Dimension(75, 25));
+		cbxAddProvince.setOpaque(false);
+		cbxAddProvince.setForeground(Color.WHITE);
+		cbxAddProvince.setFont(new Font("Roboto", Font.PLAIN, 12));
+		cbxAddProvince.setFocusable(false);
+		cbxAddProvince.setBorder(null);
+		cbxAddProvince.setBackground(Color.DARK_GRAY);
+		addPanel.add(cbxAddProvince);
 		
 		/****************************************************************************************************************************************************************************************************/
 		
@@ -352,14 +335,15 @@ public class StudInfoPanel extends JPanel {
 		docPanel.setBounds(564, 11, 244, 84);
 		mainPanel.add(docPanel);
 		
-		JPanel studOPanel = new JPanel();
+		/**************************************************	STUDENTO PANEL ****************************************/
+		studOPanel = new JPanel();
 		studOPanel.setOpaque(false);
 		studOPanel.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(128, 0, 0)));
 		studOPanel.setBounds(9, 410, 799, 65);
 		add(studOPanel);
 		studOPanel.setLayout(new MigLayout("fillx", "[100,fill][100,fill][100]40[grow]", "0[grow]0"));
 		
-		JComboBox cbxGrade = new JComboBox();
+		cbxGrade = new JComboBox();
 		cbxGrade.setBorder(new TitledBorder(new LineBorder(new Color(128, 0, 0)), "Grade", TitledBorder.LEADING, TitledBorder.TOP, null, Color.WHITE));
 		cbxGrade.setBackground(Color.DARK_GRAY);
 		cbxGrade.setFocusable(false);
@@ -370,7 +354,7 @@ public class StudInfoPanel extends JPanel {
 		cbxGrade.setBounds(10, 7, 100, 41);
 		studOPanel.add(cbxGrade,"cell 0 0,growx");
 		
-		JComboBox cbxLevel = new JComboBox();
+		cbxLevel = new JComboBox();
 		cbxLevel.setBorder(new TitledBorder(new LineBorder(new Color(128, 0, 0)), "Level", TitledBorder.LEADING, TitledBorder.TOP, null, Color.WHITE));
 		cbxLevel.setBackground(Color.DARK_GRAY);
 		cbxLevel.setFocusable(false);
@@ -381,7 +365,7 @@ public class StudInfoPanel extends JPanel {
 		cbxLevel.setBounds(120, 7, 100, 41);
 		studOPanel.add(cbxLevel,"cell 1 0,growx");
 		
-		JComboBox cbxSyear = new JComboBox();
+		cbxSyear = new JComboBox();
 		cbxSyear.setBorder(new TitledBorder(new LineBorder(new Color(128, 0, 0)), "School Year", TitledBorder.LEADING, TitledBorder.TOP, null, Color.WHITE));
 		cbxSyear.setBackground(Color.DARK_GRAY);
 		cbxSyear.setFocusable(false);
@@ -392,27 +376,27 @@ public class StudInfoPanel extends JPanel {
 		cbxSyear.setBounds(230, 7, 100, 41);
 		studOPanel.add(cbxSyear,"cell 2 0,growx"); 
 		
-		JPanel honorPanel = new JPanel();
+		honorPanel = new JPanel();
 		honorPanel.setOpaque(false);
 		studOPanel.add(honorPanel, "cell 3 0,grow");
 		honorPanel.setLayout(null);
 		
-		JCheckBox chkHonor = new JCheckBox("Are you a 1st/2nd honor from your most recent year? ");
+		chkHonor = new JCheckBox("Are you a 1st/2nd honor from your most recent year? ");
 		chkHonor.setForeground(Color.WHITE);
 		chkHonor.setOpaque(false);
 		chkHonor.setFont(new Font("Roboto", Font.PLAIN, 12));
 		chkHonor.setBounds(5, 7, 427, 23);
 		honorPanel.add(chkHonor);
 		
-		JLabel lblYhonor = new JLabel("If yes,which of these did you achieve?");
+		lblYhonor = new JLabel("If yes,which of these did you achieve?");
 		lblYhonor.setVisible(false);
 		lblYhonor.setForeground(Color.WHITE);
 		lblYhonor.setFont(new Font("Roboto", Font.PLAIN, 12));
 		lblYhonor.setBounds(10,35, 207, 14);
 		honorPanel.add(lblYhonor);
 		
-		ButtonGroup btnGrpHonor=new ButtonGroup();
-		JRadioButton rdbFirst = new JRadioButton("1st Honor");
+		btnGrpHonor=new ButtonGroup();
+		rdbFirst = new JRadioButton("1st Honor");
 		rdbFirst.setVisible(false);
 		rdbFirst.setForeground(Color.WHITE);
 		rdbFirst.setOpaque(false);
@@ -420,7 +404,7 @@ public class StudInfoPanel extends JPanel {
 		rdbFirst.setBounds(210, 30, 109, 23);
 		honorPanel.add(rdbFirst);
 		
-		JRadioButton rdbSecond = new JRadioButton("2nd Honor");
+		rdbSecond = new JRadioButton("2nd Honor");
 		rdbSecond.setVisible(false);
 		rdbSecond.setForeground(Color.WHITE);
 		rdbSecond.setOpaque(false);
@@ -430,17 +414,6 @@ public class StudInfoPanel extends JPanel {
 		honorPanel.add(rdbSecond);
 		btnGrpHonor.add(rdbFirst);
 		btnGrpHonor.add(rdbSecond);
-		
-		
-		
-		
-	}
-	
-	/**************************************************	INITIALIZE METHOD ****************************************/
-	
-	public void initialize() {
-		setOpaque(false);
-		setBackground(Color.DARK_GRAY);
 		
 	}
 }
