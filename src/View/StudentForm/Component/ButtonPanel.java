@@ -1,22 +1,36 @@
 package View.StudentForm.Component;
 
 import javax.swing.*;
+import Model.GUICodingFormat;
 import java.awt.*;
 
 
-public class ButtonPanel extends JPanel {
+public class ButtonPanel extends JPanel implements GUICodingFormat{
 	
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 1L;
 	private JButton btnEnroll,btnPrint;
 	
 	
 	public ButtonPanel() {
+		init();
+		getComponent();
+		
+		
+
+	}
+
+	
+	/**************************************************	INIT METHOD ****************************************/
+	@Override
+	public void init() {
 		setOpaque(false);
 		setLayout(null);
 		
+	}
+	/**************************************************	GETCOMPONENT METHOD ****************************************/
+	@Override
+	public void getComponent() {
 		btnEnroll = new JButton("Enroll");
 		btnEnroll.setBounds(132, 5, 90, 45);
 		btnEnroll.setPreferredSize(new Dimension(90, 45));
@@ -37,9 +51,9 @@ public class ButtonPanel extends JPanel {
 		btnPrint.setEnabled(false);
 		btnPrint.setBackground(new Color(128, 0, 0));
 		add(btnPrint);
-
+		
 	}
-
+	
 	public JButton getBtnEnroll() {
 		return btnEnroll;
 	}

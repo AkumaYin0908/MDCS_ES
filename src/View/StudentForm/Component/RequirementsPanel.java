@@ -2,11 +2,12 @@ package View.StudentForm.Component;
 
 import javax.swing.*;
 import javax.swing.border.*;
+import Model.GUICodingFormat;
 import java.awt.*;
 import net.miginfocom.swing.MigLayout;
 
 
-public class RequirementsPanel extends JPanel {
+public class RequirementsPanel extends JPanel implements GUICodingFormat {
 
 	/**
 	 * 
@@ -23,8 +24,17 @@ public class RequirementsPanel extends JPanel {
 		
 	
 	}
+	/**************************************************	INIT METHOD ****************************************/
+	@Override
+	public void init() {
+		setOpaque(false);
+		setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(128, 0, 0)));
+		setBackground(Color.DARK_GRAY);
+		setLayout(null);
+	}
 	
 	/**************************************************	GETCOMPONENT METHOD ****************************************/
+	@Override
 	public void getComponent() {
 		
 		/**************************************************	REQUIREMENTS PANEL ****************************************/
@@ -72,12 +82,21 @@ public class RequirementsPanel extends JPanel {
 		add(requirementsPanel);
 	}
 	
-	/**************************************************	INIT METHOD ****************************************/
-	public void init() {
-		setOpaque(false);
-		setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(128, 0, 0)));
-		setBackground(Color.DARK_GRAY);
-		setLayout(null);
+	
+	public JCheckBox getChkNSO() {
+		return chkNSO;
 	}
+	public JCheckBox getChkECD() {
+		return chkECD;
+	}
+	public JCheckBox getChkF137() {
+		return chkF137;
+	}
+	public JCheckBox getChkBaptismal() {
+		return chkBaptismal;
+	}
+	
+	
+	
 
 }

@@ -12,11 +12,11 @@ public class SLAPanel extends JPanel implements GUICodingFormat{
 
 	
 	private static final long serialVersionUID = 1L;
-	private JPanel slaPanel;
+	private JPanel slaPanel,buttonPanel;
 	private JTable table;
 	private DefaultTableModel tableModel;
 	private JButton btnAdd,btnEdit,btnDelete;
-	
+	private JScrollPane scrollPane;
 	public SLAPanel() {
 		init();
 		getComponent();
@@ -97,7 +97,7 @@ public class SLAPanel extends JPanel implements GUICodingFormat{
 		
 		
 		
-		DefaultTableCellRenderer r = new DefaultTableCellRenderer() {
+		DefaultTableCellRenderer renderer = new DefaultTableCellRenderer() {
 		    /**
 			 * 
 			 */
@@ -122,7 +122,7 @@ public class SLAPanel extends JPanel implements GUICodingFormat{
 
 		};
 		
-		table.getTableHeader().setDefaultRenderer(r);
+		table.getTableHeader().setDefaultRenderer(renderer);
 		table.getTableHeader().setReorderingAllowed(false);
 		
 		DefaultTableCellRenderer toCenter = new DefaultTableCellRenderer();
@@ -132,7 +132,7 @@ public class SLAPanel extends JPanel implements GUICodingFormat{
 		}
 		
 		
-		JScrollPane scrollPane = new JScrollPane();
+		scrollPane = new JScrollPane();
 		scrollPane.setRequestFocusEnabled(false);
 		scrollPane.setFocusable(false);
 		scrollPane.setBorder(BorderFactory.createEmptyBorder());
@@ -141,7 +141,7 @@ public class SLAPanel extends JPanel implements GUICodingFormat{
 		scrollPane.getViewport().setOpaque(false);
 		slaPanel.add(scrollPane, "cell 0 0,grow");
 		
-		JPanel buttonPanel = new JPanel();
+		buttonPanel = new JPanel();
 		buttonPanel.setOpaque(false);
 		buttonPanel.setBounds(10, 295, 685, 64);
 		add(buttonPanel);

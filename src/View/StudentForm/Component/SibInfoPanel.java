@@ -16,6 +16,9 @@ public class SibInfoPanel extends JPanel implements GUICodingFormat {
 	private DefaultTableModel tableModel;
 	private JScrollPane scrollPane;
 	private JButton btnConfirm;
+	private JCheckBox chkSibling;
+	
+	
 	public SibInfoPanel() {
 		init();
 		getComponent();
@@ -33,14 +36,14 @@ public class SibInfoPanel extends JPanel implements GUICodingFormat {
 
 	@Override
 	public void getComponent() {
-		JPanel sibinfoPanel = new JPanel();
+		sibinfoPanel = new JPanel();
 		sibinfoPanel.setOpaque(false);
 		sibinfoPanel.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(128, 0, 0)));
 		sibinfoPanel.setBounds(10, 11, 680, 388);
 		add(sibinfoPanel);
 		sibinfoPanel.setLayout(new MigLayout("fillx", "[529.00]", "[][311.00][45.00]"));
 		
-		JCheckBox chkSibling = new JCheckBox("Do you have a sibling currently enrolled in Misericordia Dei Catholic School?");
+		chkSibling = new JCheckBox("Do you have a sibling currently enrolled in Misericordia Dei Catholic School?");
 		chkSibling.setFocusable(false);
 		chkSibling.setRequestFocusEnabled(false);
 		chkSibling.setForeground(Color.WHITE);
@@ -100,7 +103,7 @@ public class SibInfoPanel extends JPanel implements GUICodingFormat {
 		
 		
 		
-		DefaultTableCellRenderer r = new DefaultTableCellRenderer() {
+		DefaultTableCellRenderer renderer = new DefaultTableCellRenderer() {
 		   
 			private static final long serialVersionUID = 1L;
 			Font font = new Font("Roboto",Font.BOLD,12);
@@ -123,7 +126,7 @@ public class SibInfoPanel extends JPanel implements GUICodingFormat {
 
 		};
 		
-		table.getTableHeader().setDefaultRenderer(r);
+		table.getTableHeader().setDefaultRenderer(renderer);
 		table.getTableHeader().setReorderingAllowed(false);
 		
 		DefaultTableCellRenderer toCenter = new DefaultTableCellRenderer();
@@ -154,4 +157,17 @@ public class SibInfoPanel extends JPanel implements GUICodingFormat {
 		buttonPanel.add(btnConfirm);
 		
 	}
+
+	public JTable getTable() {
+		return table;
+	}
+
+	public DefaultTableModel getTableModel() {
+		return tableModel;
+	}
+
+	public JButton getBtnConfirm() {
+		return btnConfirm;
+	}
+	
 }
