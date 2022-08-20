@@ -3,23 +3,16 @@ package View.StudentForm.Component.Dialogs;
 
 
 import javax.swing.*;
-import javax.swing.border.EmptyBorder;
-import net.miginfocom.swing.MigLayout;
-import java.awt.Color;
-import java.awt.Insets;
-import java.awt.Font;
-import javax.swing.border.MatteBorder;
-import javax.swing.border.TitledBorder;
+import javax.swing.border.*;
 import javax.swing.table.DefaultTableModel;
 
+import Model.GUICodingFormat;
+import net.miginfocom.swing.MigLayout;
+import java.awt.*;
 import OtherGUIFunctionalities.DragListener;
 import View.StudentForm.Component.SLAPanel;
 
-import java.awt.Dimension;
-import javax.swing.border.BevelBorder;
-import javax.swing.border.SoftBevelBorder;
-
-public class SLAInputDialog extends JDialog {
+public class SLAInputDialog extends JDialog implements GUICodingFormat {
 	private SLAPanel slaPanel;
 	private DefaultTableModel tableModel;
 	private JPanel topPanel;
@@ -43,14 +36,30 @@ public class SLAInputDialog extends JDialog {
 		this.slaPanel=slaPanel;
 		this.tableModel=slaPanel.getTableModel();
 		
-		initialize();
+		
 		init();
+		getComponent();
 	}
 	
 	/**************************************************	INIT METHOD ****************************************/
-	
+	@Override
 	public void init() {
+		setModal(true);
+		setUndecorated(true);
+		setSize(325,375);
+		setLocationRelativeTo(null);
+		drag=new DragListener();
+		addMouseListener(drag);
+		addMouseMotionListener(drag);
+		layout=new MigLayout("fill", "0[fill]0", "0[]0[]0[grow]0");
+		getContentPane().setLayout(layout);
 		
+		
+	}
+	
+	
+	@Override
+	public void getComponent() {
 		/**************************************************	TOP PANEL ****************************************/
 		topPanel = new JPanel();
 		topPanel.setBackground(new Color(128, 0, 0));
@@ -152,6 +161,7 @@ public class SLAInputDialog extends JDialog {
 		cbxYTo.setBorder(new TitledBorder(new MatteBorder(0, 0, 1, 0, (Color) new Color(128, 0, 0)), "To", TitledBorder.LEADING, TitledBorder.TOP, new Font("Roboto",Font.PLAIN,12), new Color(128, 0, 0)));
 		cbxYTo.setBackground(Color.DARK_GRAY);
 		periodPanel.add(cbxYTo, "cell 1 0,growx");
+		
 		/**************************************************	BUTTON PANEL ****************************************/
 		
 		buttonPanel = new JPanel();
@@ -183,19 +193,7 @@ public class SLAInputDialog extends JDialog {
 		
 	}
 	
-	/**************************************************	INITIALIZE METHOD ****************************************/
-	public void initialize() {
-		setModal(true);
-		setUndecorated(true);
-		setSize(325,375);
-		setLocationRelativeTo(null);
-		drag=new DragListener();
-		addMouseListener(drag);
-		addMouseMotionListener(drag);
-		layout=new MigLayout("fill", "0[fill]0", "0[]0[]0[grow]0");
-		getContentPane().setLayout(layout);
-	}
-
+	/**************************************************	GETTERS METHOD ****************************************/
 	public DefaultTableModel getTableModel() {
 		return tableModel;
 	}
@@ -235,8 +233,6 @@ public class SLAInputDialog extends JDialog {
 	public JComboBox<String> getCbxYTo() {
 		return cbxYTo;
 	}
-	
-	/**************************************************	GETTERS METHOD ****************************************/
-	
+
 	
 }

@@ -5,7 +5,7 @@ public class Staff extends Person{
 
 	
 
-	protected int staffID;
+	private int staffID;
 	private String position;
 	private boolean isEmployed;
 	

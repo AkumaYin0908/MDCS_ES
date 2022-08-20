@@ -13,7 +13,7 @@ import View.DateChooser.DateChooser;
 public class StudInfoPanel extends JPanel implements GUICodingFormat {
 	
 	private static final long serialVersionUID = 1L;
-	private JPanel studInfoPanel,mainPanel,picPanel,docPanel,studOPanel;
+	private JPanel studInfoPanel,mainPanel,picPanel,docPanel,pwdPanel,studOPanel;
 	private JPanel genderPanel;
 	private JPanel pobPanel,addPanel;
 	private JTextField txtLastName, txtFirstName,txtMidName,txtNicName;
@@ -28,7 +28,7 @@ public class StudInfoPanel extends JPanel implements GUICodingFormat {
 	private JTextField txtReligion;
 	private JTextField txtPostal;
 	private JTextField txtMobileNo;
-	private JLabel lblNewLabel;
+	private JLabel lblPic;
 	private JButton btnUpload;
 	private JComboBox<String> cbxGrade,cbxLevel,cbxSyear;
 	private JPanel honorPanel;
@@ -36,6 +36,10 @@ public class StudInfoPanel extends JPanel implements GUICodingFormat {
 	private JLabel lblYhonor;
 	private ButtonGroup btnGrpHonor;
 	private JRadioButton rdbFirst,rdbSecond;
+	private JLabel lblStudID,lblDocNo;
+	private JCheckBox chkPwd;
+	private JTextField txtDisability;
+	
 	public StudInfoPanel() {
 		
 		init();
@@ -66,7 +70,7 @@ public class StudInfoPanel extends JPanel implements GUICodingFormat {
 		setLayout(null);
 		
 		mainPanel = new JPanel();
-		mainPanel.setBounds(0, -5, 820, 426);
+		mainPanel.setBounds(0, -5, 820, 410);
 		mainPanel.setOpaque(false);
 		mainPanel.setBackground(Color.DARK_GRAY);
 		mainPanel.setLayout(null);
@@ -308,16 +312,15 @@ public class StudInfoPanel extends JPanel implements GUICodingFormat {
 		picPanel = new JPanel();
 		picPanel.setOpaque(false);
 		picPanel.setBorder(new LineBorder(new Color(128, 0, 0)));
-		picPanel.setBounds(564, 102, 244, 301);
+		picPanel.setBounds(564, 118, 244, 285);
 		mainPanel.add(picPanel);
-		picPanel.setLayout(null);
+		picPanel.setLayout(new MigLayout("fillx", "[]", "[200!,grow]5[50!,grow,fill]"));
 		
-		lblNewLabel = new JLabel("Upload here");
-		lblNewLabel.setForeground(Color.WHITE);
-		lblNewLabel.setFont(new Font("Roboto", Font.PLAIN, 15));
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setBounds(10, 11, 224, 215);
-		picPanel.add(lblNewLabel);
+		lblPic = new JLabel("Upload here");
+		lblPic.setForeground(Color.WHITE);
+		lblPic.setFont(new Font("Roboto", Font.PLAIN, 15));
+		lblPic.setHorizontalAlignment(SwingConstants.CENTER);
+		picPanel.add(lblPic, "cell 0 0,grow");
 		
 		btnUpload = new JButton("Upload");
 		btnUpload.setFocusable(false);
@@ -325,25 +328,41 @@ public class StudInfoPanel extends JPanel implements GUICodingFormat {
 		btnUpload.setBackground(new Color(128, 0, 0));
 		btnUpload.setForeground(Color.WHITE);
 		btnUpload.setFont(new Font("Roboto", Font.PLAIN, 12));
-		btnUpload.setBounds(75, 255, 100, 35);
-		picPanel.add(btnUpload);
+		picPanel.add(btnUpload, "cell 0 1,alignx center");
 		
 		/**************************************************	DOCUMENT PANEL ****************************************/
 		docPanel = new JPanel();
 		docPanel.setOpaque(false);
 		docPanel.setBorder(new LineBorder(new Color(128, 0, 0)));
-		docPanel.setBounds(564, 11, 244, 84);
+		docPanel.setBounds(564, 11, 244, 96);
 		mainPanel.add(docPanel);
+		docPanel.setLayout(null);
+		
+		lblStudID = new JLabel("MDCS-00000");
+		lblStudID.setForeground(Color.WHITE);
+		lblStudID.setHorizontalAlignment(SwingConstants.CENTER);
+		lblStudID.setBorder(new TitledBorder(new EmptyBorder(0, 0, 0, 0), "Student ID No.", TitledBorder.LEADING, TitledBorder.TOP, new Font("Roboto",Font.PLAIN,12), new Color(255, 255, 255)));
+		lblStudID.setFont(new Font("Roboto", Font.BOLD, 14));
+		lblStudID.setBounds(10, 10, 225, 45);
+		docPanel.add(lblStudID);
+		
+		lblDocNo = new JLabel("MDCS-EF-00000");
+		lblDocNo.setHorizontalAlignment(SwingConstants.CENTER);
+		lblDocNo.setForeground(Color.WHITE);
+		lblDocNo.setFont(new Font("Roboto", Font.BOLD, 14));
+		lblDocNo.setBorder(new TitledBorder(new EmptyBorder(0, 0, 0, 0), "Document No.", TitledBorder.LEADING, TitledBorder.TOP, new Font("Roboto",Font.PLAIN,12), new Color(255, 255, 255)));
+		lblDocNo.setBounds(10, 51, 225, 45);
+		docPanel.add(lblDocNo);
 		
 		/**************************************************	STUDENTO PANEL ****************************************/
 		studOPanel = new JPanel();
 		studOPanel.setOpaque(false);
 		studOPanel.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(128, 0, 0)));
-		studOPanel.setBounds(9, 410, 799, 65);
+		studOPanel.setBounds(10, 485, 799, 65);
 		add(studOPanel);
 		studOPanel.setLayout(new MigLayout("fillx", "[100,fill][100,fill][100]40[grow]", "0[grow]0"));
 		
-		cbxGrade = new JComboBox();
+		cbxGrade = new JComboBox<>();
 		cbxGrade.setBorder(new TitledBorder(new LineBorder(new Color(128, 0, 0)), "Grade", TitledBorder.LEADING, TitledBorder.TOP, null, Color.WHITE));
 		cbxGrade.setBackground(Color.DARK_GRAY);
 		cbxGrade.setFocusable(false);
@@ -354,7 +373,7 @@ public class StudInfoPanel extends JPanel implements GUICodingFormat {
 		cbxGrade.setBounds(10, 7, 100, 41);
 		studOPanel.add(cbxGrade,"cell 0 0,growx");
 		
-		cbxLevel = new JComboBox();
+		cbxLevel = new JComboBox<>();
 		cbxLevel.setBorder(new TitledBorder(new LineBorder(new Color(128, 0, 0)), "Level", TitledBorder.LEADING, TitledBorder.TOP, null, Color.WHITE));
 		cbxLevel.setBackground(Color.DARK_GRAY);
 		cbxLevel.setFocusable(false);
@@ -365,7 +384,7 @@ public class StudInfoPanel extends JPanel implements GUICodingFormat {
 		cbxLevel.setBounds(120, 7, 100, 41);
 		studOPanel.add(cbxLevel,"cell 1 0,growx");
 		
-		cbxSyear = new JComboBox();
+		cbxSyear = new JComboBox<>();
 		cbxSyear.setBorder(new TitledBorder(new LineBorder(new Color(128, 0, 0)), "School Year", TitledBorder.LEADING, TitledBorder.TOP, null, Color.WHITE));
 		cbxSyear.setBackground(Color.DARK_GRAY);
 		cbxSyear.setFocusable(false);
@@ -415,5 +434,179 @@ public class StudInfoPanel extends JPanel implements GUICodingFormat {
 		btnGrpHonor.add(rdbFirst);
 		btnGrpHonor.add(rdbSecond);
 		
+		pwdPanel = new JPanel();
+		pwdPanel.setOpaque(false);
+		pwdPanel.setBackground(Color.DARK_GRAY);
+		pwdPanel.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(128, 0, 0)));
+		pwdPanel.setBounds(10, 405, 799, 75);
+		add(pwdPanel);
+		pwdPanel.setLayout(new MigLayout("", "[]", "0[45!]0[25!]0"));
+		
+		chkPwd = new JCheckBox("<html> Do you have any physical disability and/or condition that requires special attention or"
+				+ " that should be taken into consideration in planning your academic activities?");
+		
+		chkPwd.setOpaque(false);
+		chkPwd.setForeground(Color.WHITE);
+		chkPwd.setFont(new Font("Roboto", Font.PLAIN, 12));
+		pwdPanel.add(chkPwd, "cell 0 0,grow");
+		
+		txtDisability = new JTextField();
+		txtDisability.setVisible(false);
+		txtDisability.setOpaque(false);
+		txtDisability.setHorizontalAlignment(SwingConstants.CENTER);
+		txtDisability.setText("State your disability here");
+		txtDisability.setPreferredSize(new Dimension(250, 35));
+		txtDisability.setForeground(Color.WHITE);
+		txtDisability.setFont(new Font("Roboto", Font.PLAIN, 12));
+		txtDisability.setEditable(false);
+		txtDisability.setBorder(new MatteBorder(0, 0, 1, 0, (Color) Color.WHITE));
+		pwdPanel.add(txtDisability, "cell 0 1,growx");
+		
 	}
+
+	public JPanel getDocPanel() {
+		return docPanel;
+	}
+
+	public JTextField getTxtLastName() {
+		return txtLastName;
+	}
+
+	public JTextField getTxtFirstName() {
+		return txtFirstName;
+	}
+
+	public JTextField getTxtMidName() {
+		return txtMidName;
+	}
+
+	public JTextField getTxtNicName() {
+		return txtNicName;
+	}
+
+	public JTextField getTxtBday() {
+		return txtBday;
+	}
+
+	public JTextField getTxtAge() {
+		return txtAge;
+	}
+
+	public DateChooser getDtChooser() {
+		return dtChooser;
+	}
+
+	public JRadioButton getRdbMale() {
+		return rdbMale;
+	}
+
+	public JRadioButton getRdbFemale() {
+		return rdbFemale;
+	}
+
+	public JComboBox<String> getCbxBarangay() {
+		return cbxBarangay;
+	}
+
+	public JComboBox<String> getCbxMunCity() {
+		return cbxMunCity;
+	}
+
+	public JComboBox<String> getCbxProvince() {
+		return cbxProvince;
+	}
+
+	public SortedComboBoxModel<String> getCbxMBarangay() {
+		return cbxMBarangay;
+	}
+
+	public SortedComboBoxModel<String> getCbxMMunCity() {
+		return cbxMMunCity;
+	}
+
+	public SortedComboBoxModel<String> getCbxMProvince() {
+		return cbxMProvince;
+	}
+
+	public JComboBox<String> getCbxAddBarangay() {
+		return cbxAddBarangay;
+	}
+
+	public JComboBox<String> getCbxAddMunCity() {
+		return cbxAddMunCity;
+	}
+
+	public JComboBox<String> getCbxAddProvince() {
+		return cbxAddProvince;
+	}
+
+	public JTextField getTxtNationality() {
+		return txtNationality;
+	}
+
+	public JTextField getTxtReligion() {
+		return txtReligion;
+	}
+
+	public JTextField getTxtPostal() {
+		return txtPostal;
+	}
+
+	public JTextField getTxtMobileNo() {
+		return txtMobileNo;
+	}
+
+	public JLabel getLblPic() {
+		return lblPic;
+	}
+
+	public JButton getBtnUpload() {
+		return btnUpload;
+	}
+
+	public JComboBox<String> getCbxGrade() {
+		return cbxGrade;
+	}
+
+	public JComboBox<String> getCbxLevel() {
+		return cbxLevel;
+	}
+
+	public JComboBox<String> getCbxSyear() {
+		return cbxSyear;
+	}
+
+	public JCheckBox getChkHonor() {
+		return chkHonor;
+	}
+
+	public JLabel getLblYhonor() {
+		return lblYhonor;
+	}
+
+	public JRadioButton getRdbFirst() {
+		return rdbFirst;
+	}
+
+	public JRadioButton getRdbSecond() {
+		return rdbSecond;
+	}
+
+	public JLabel getLblStudID() {
+		return lblStudID;
+	}
+
+	public JLabel getLblDocNo() {
+		return lblDocNo;
+	}
+
+	public JCheckBox getChkPwd() {
+		return chkPwd;
+	}
+
+	public JTextField getTxtDisability() {
+		return txtDisability;
+	}
+	
+	
 }
